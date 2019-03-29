@@ -1,3 +1,2 @@
-black
+-r requirements.txt
 pre-commit
-pyupgrade
