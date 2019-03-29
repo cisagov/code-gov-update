@@ -4,7 +4,32 @@ language: python
 python: 3.7
 services: docker
 
+global:
+  - IMAGE_NAME=dhsncats/code-gov-update
+  - DOCKER_USER=jsf9k
+  - >
+      secure: "AWgvN9ntvYUNErr0dMcE4VEK7mWB3s1E+oxj1sySmpvnLwpsBwvgaDD
+      fZI4QxZBtya9lu25DU+rIgS0eT6NtOSX7M0alSNm78KhfGEKWndTcQdD+vHDjAWG
+      yEXyv3HcwE5GpHCse71oqOLZgT+l/0OlzixyUhuLnq/w9tJfw0gk1ptqrlpbhAsO
+      fTHqsC805EHf8nFHhMprWtKtWpYNwKkJxlXBfNjJtX6sxsffF+Cqd8Dub6Z6LL/x
+      zxfRM2CSLFc2wmdYTXADjO2LJbui/dNNqTiAYPaWmgnkYp6YLPG4yGEhs7PxhQ7M
+      NshNVunehTCC09tUZsjcsOWAq/vVW3aNOtXmZwhI2Wn+x54ib36iEavIS+TuBc71
+      KMXKvebci7JnmR76gcaYGsLk9QJaAv3uB/ssE1X653iKERGVNinT82bj2riIUXcZ
+      GXElx/qUUrtQg53IvPsNZw+5Y7zf3aFNrTqwQZidtOjmm+QBMZkVa3I9GZoo99Nn
+      K9j8n4shob1DvavU7RSnL58d+QFbDxZiIS43DYbJ3Wi1lTh2tLYhIPPqJ+MGq1Em
+      BWz4pZjudhoSj5IlY5x99QLGpQ89rSYQDi4Tx5q0/CgW7P+SJ/2qWsNuSTgN9IcJ
+      G5euS9fD9GRGButeufUaSZ0bd+zGXydA151TQVLbKCjWP+18KGeQ="
+
 install:
   - pip install --upgrade -r requirements-test.txt
+  - travis_scripts/build_docker_image.sh
+
 script:
   - pre-commit run --all-files
+
+deploy:
+  - provider: script
+    script: travis_scripts/deploy_to_docker_hub.sh
+    on:
+      tags: true
+      python: '3.7'
