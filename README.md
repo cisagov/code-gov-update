@@ -1,16 +1,22 @@
-# skeleton-generic #
+# code-gov-update #
 
-[![Build Status](https://travis-ci.com/cisagov/skeleton-generic.svg?branch=develop)](https://travis-ci.com/cisagov/skeleton-generic)
+[![Build Status](https://travis-ci.com/cisagov/code-gov-update.svg?branch=develop)](https://travis-ci.com/cisagov/code-gov-update)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/code-gov-update.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/code-gov-update/alerts/)
+[![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/code-gov-update.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/code-gov-update/context:python)
 
-This is a generic skeleton project that can be used to quickly get a
-new [cisagov](https://github.com/cisagov) GitHub project started.
-This skeleton project contains [licensing information](LICENSE.md), as
-well as [pre-commit hooks](https://pre-commit.com) and a [Travis
-CI](https://travis-ci.com) configuration appropriate for the major
-languages that we use.
+This project contains code for updating the DHS
+[code.gov](https://code.gov) inventory published
+[here](https://www.dhs.gov/code.json).
 
-In many cases you will instead want to use one of the more specific
-skeleton projects derived from this one.
+## How it works ##
+
+The [LLNL/scraper](https://github.com/LLNL/scraper) project is used to
+scrape a handful of GitHub organizations that belong to DHS and
+produce an updated JSON file per [the code.gov
+specification](https://code.gov/about/compliance/inventory-code).  If
+that file differs from the previously-generated one, it is emailed to
+the appropriate address so that it can be used to update the content
+hosted [here](https://www.dhs.gov/code.json).
 
 ## Contributing ##
 
