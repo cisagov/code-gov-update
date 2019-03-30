@@ -1,0 +1,30 @@
+# Versioning files
+bump_version.sh
+tag.sh
+version.txt
+
+# READMEs
+*.md
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Linters
+.flake8
+.git
+.gitignore
+.pre-commit-config.yaml
+.prettierignore
+.python-version
+.yamllint
+
+# Extra requirements files
+requirements-dev.txt
+requirements-test.txt
+
+secrets
+
+# TravisCI
+.travis.yml
+travis_scripts
