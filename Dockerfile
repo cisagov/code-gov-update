@@ -32,7 +32,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Put this just before we change users because the copy (and every
 # step after it) will often be rerun by docker, but we need to be root
 # for the chown command.
-COPY update.sh email-update.py $USER_HOME/
+COPY update.sh email-update.py body.txt body.html $USER_HOME/
 RUN chown -R ${USER}:${USER} $USER_HOME
 
 ###
