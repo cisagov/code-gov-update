@@ -8,7 +8,7 @@ env:
   global:
     - IMAGE_NAME=dhsncats/code-gov-update
     - DOCKER_USER=jsf9k
-    - >
+    - >-
       secure: "WS6nFL47FlKmNth1NKSnuuy+bjHbcs4EDjSJ5RNf+3geQKjldTwpWZm
       +Op1hYdaernZGQ2gDgXaALEFG6QZy44Cn9le6VF7OM+MV8KrsiI3D4b9jdpSHi7U
       21kHBYe87w2f/bi/06uutM+3dq5BbCLF+BUJMmg74oxWUe8ycQOEvGbQeW2KKvcE
