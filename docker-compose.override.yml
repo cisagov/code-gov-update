@@ -4,13 +4,11 @@ services:
   update:
     command:
       - "--from=code@cyber.dhs.gov"
-      - "--to=jeremy.frasier@trio.dhs.gov"
+      - "--to=webpublishing@hq.dhs.gov"
+      - "--cc=ncats-dev@beta.dhs.gov"
       - "--reply=ncats-dev@beta.dhs.gov"
       - "--json=code.json"
       - "--subject=\"Latest code.gov JSON file\""
       - "--text=body.txt"
       - "--html=body.html"
       - "--log-level=info"
-
-#    --cc=ncats-dev@beta.dhs.gov
-#    --to=webpublishing@hq.dhs.gov
