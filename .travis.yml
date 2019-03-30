@@ -9,17 +9,17 @@ env:
     - IMAGE_NAME=dhsncats/code-gov-update
     - DOCKER_USER=jsf9k
     - >
-        secure: "AWgvN9ntvYUNErr0dMcE4VEK7mWB3s1E+oxj1sySmpvnLwpsBwvgaDD
-        fZI4QxZBtya9lu25DU+rIgS0eT6NtOSX7M0alSNm78KhfGEKWndTcQdD+vHDjAWG
-        yEXyv3HcwE5GpHCse71oqOLZgT+l/0OlzixyUhuLnq/w9tJfw0gk1ptqrlpbhAsO
-        fTHqsC805EHf8nFHhMprWtKtWpYNwKkJxlXBfNjJtX6sxsffF+Cqd8Dub6Z6LL/x
-        zxfRM2CSLFc2wmdYTXADjO2LJbui/dNNqTiAYPaWmgnkYp6YLPG4yGEhs7PxhQ7M
-        NshNVunehTCC09tUZsjcsOWAq/vVW3aNOtXmZwhI2Wn+x54ib36iEavIS+TuBc71
-        KMXKvebci7JnmR76gcaYGsLk9QJaAv3uB/ssE1X653iKERGVNinT82bj2riIUXcZ
-        GXElx/qUUrtQg53IvPsNZw+5Y7zf3aFNrTqwQZidtOjmm+QBMZkVa3I9GZoo99Nn
-        K9j8n4shob1DvavU7RSnL58d+QFbDxZiIS43DYbJ3Wi1lTh2tLYhIPPqJ+MGq1Em
-        BWz4pZjudhoSj5IlY5x99QLGpQ89rSYQDi4Tx5q0/CgW7P+SJ/2qWsNuSTgN9IcJ
-        G5euS9fD9GRGButeufUaSZ0bd+zGXydA151TQVLbKCjWP+18KGeQ="
+      secure: "WS6nFL47FlKmNth1NKSnuuy+bjHbcs4EDjSJ5RNf+3geQKjldTwpWZm
+      +Op1hYdaernZGQ2gDgXaALEFG6QZy44Cn9le6VF7OM+MV8KrsiI3D4b9jdpSHi7U
+      21kHBYe87w2f/bi/06uutM+3dq5BbCLF+BUJMmg74oxWUe8ycQOEvGbQeW2KKvcE
+      diE8vgiYNAxYQxBXH2EL5NWSksztgPNXrOWAIww5hSTVOriYtl65Xk6d9EDqLPzV
+      Sa8jH8dh0ASJ82NJKc4IDUn7eml4T22gin7vsPd3+xUPX6rJ/60weGUXU+SZdHVp
+      vk7AEOcNSkNc1/otCM2pzBvHsq25SVFvvFOrjTKGYaWgX+QqKtQTEjODeIOetyfQ
+      cQKHbhTQjG2SrDDWMvqd81Y5EmY3HHPuogDXMDPeFarz7YNnjHEweErtDFDkowpC
+      hHbjUgl/OomDzqb3DCYzBaa68sS1i8noCk7YtvQGBhb5fuediLEuPrKU5FE7PNX3
+      qWIebKFcshS/FZRkpACRgFmIWbuW1SSi214+kL4szMDKsCxW3eiKTowih6EfJJ5+
+      O0M4dO23GO15OaJJWrS6ZvUqPR23Ezzyl9K3H+EGJLbcIJOJdLgaUjdk1UqyJ3eF
+      tNduoN86qExKnwzeQ4ul0o0Xpfo1pCC/3EfALuqx4SjfnBgq60Jg="
 
 install:
   - pip install --upgrade -r requirements-test.txt
