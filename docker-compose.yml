@@ -8,7 +8,7 @@ secrets:
 
 services:
   update:
-    image: 'dhsncats/code-gov-update:0.0.1'
+    image: 'dhsncats/code-gov-update:0.0.2'
     secrets:
       - source: scraper_config
         target: scraper_config.json
