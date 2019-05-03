@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-"""email-update.py is a tool for sending an updated code.gov JSON file
+"""email-update.py is a tool for sending an updated code.gov JSON file.
 
 Usage:
   email-update.py --from=EMAIL --to=EMAIL [--cc=EMAIL] [--reply=EMAIL]  --json=FILENAME --subject=SUBJECT --text=FILENAME --html=FILENAME [--log-level=LEVEL]
@@ -31,6 +31,7 @@ import docopt
 
 
 def main():
+    """Compile and send the update."""
     # Parse command line arguments
     args = docopt.docopt(__doc__)
 
