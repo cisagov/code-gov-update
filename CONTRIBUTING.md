@@ -111,9 +111,9 @@ can create and configure the Python virtual environment with these
 commands:
 
 ```console
-cd skeleton-generic
-pyenv virtualenv <python_version_to_use> skeleton-generic
-pyenv local skeleton-generic
+cd code-gov-update
+pyenv virtualenv <python_version_to_use> code-gov-update
+pyenv local code-gov-update
 pip install --requirement requirements-dev.txt
 ```
 
