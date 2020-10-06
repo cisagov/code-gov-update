@@ -1,6 +1,6 @@
 # code-gov-update #
 
-[![Build Status](https://travis-ci.com/cisagov/code-gov-update.svg?branch=develop)](https://travis-ci.com/cisagov/code-gov-update)
+[![GitHub Build Status](https://github.com/cisagov/code-gov-update/workflows/build/badge.svg)](https://github.com/cisagov/code-gov-update/actions)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/cisagov/code-gov-update.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/code-gov-update/alerts/)
 [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/cisagov/code-gov-update.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/cisagov/code-gov-update/context:python)
 
@@ -25,7 +25,7 @@ details.
 
 ## License ##
 
-This project is in the worldwide [public domain](LICENSE.md).
+This project is in the worldwide [public domain](LICENSE).
 
 This project is in the public domain within the United States, and
 copyright and related rights in the work worldwide are waived through
