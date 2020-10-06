@@ -20,12 +20,14 @@ Options:
 
 """
 
+# Standard Python Libraries
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import logging
 import os
 
+# Third-Party Libraries
 import boto3
 import docopt
 
