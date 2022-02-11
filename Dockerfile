@@ -1,4 +1,4 @@
-FROM python:slim-stretch
+FROM python:3.7.11-slim-stretch
 MAINTAINER Shane Frasier <jeremy.frasier@trio.dhs.gov>
 
 ##
