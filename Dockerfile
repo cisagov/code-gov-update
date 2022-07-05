@@ -33,13 +33,13 @@ RUN apk --no-cache add cloc git
 ##
 # Make sure pip and setuptools are the latest versions
 ##
-RUN pip install --upgrade pip setuptools
+RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel
 
 ##
 # Install code-gov-update python requirements
 ##
 COPY src/requirements.txt /tmp
-RUN pip install -r /tmp/requirements.txt
+RUN python -m pip install --no-cache-dir --upgrade --requirement /tmp/requirements.txt
 
 # Put this just before we change users because the copy (and every
 # step after it) will often be rerun by docker, but we need to be root
