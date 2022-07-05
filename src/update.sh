@@ -1,4 +1,5 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ash
+# shellcheck shell=dash
 
 # Note that all command line arguments are passed directly to
 # email-update.py

@@ -1,4 +1,4 @@
-FROM python:3.7.11-slim-stretch
+FROM python:3.10.5-alpine3.16
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -21,17 +21,14 @@ ENV CISA_HOME="/home/${CISA_USER}"
 ###
 # Create unprivileged user
 ###
-RUN groupadd --system --gid ${CISA_GID} ${CISA_GROUP} \
-    && useradd --system --uid ${CISA_UID} --gid ${CISA_GROUP} --comment "${CISA_USER} user" ${CISA_USER}
+RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
+  && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
 
 ##
 # Install cloc and git since llnl-scraper requires them to estimate
 # the labor hours.
 ##
-RUN apt-get --quiet update \
-    && apt-get install --quiet --assume-yes \
-    cloc \
-    git
+RUN apk --no-cache add cloc git
 
 ##
 # Make sure pip and setuptools are the latest versions
@@ -43,9 +40,6 @@ RUN pip install --upgrade pip setuptools
 ##
 COPY src/requirements.txt /tmp
 RUN pip install -r /tmp/requirements.txt
-
-# Clean up aptitude cruft
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Put this just before we change users because the copy (and every
 # step after it) will often be rerun by docker, but we need to be root
