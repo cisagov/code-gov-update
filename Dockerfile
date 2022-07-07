@@ -9,6 +9,23 @@ FROM python:3.10.5-alpine3.16
 LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov"
 LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
 
+# Dependencies necessary to build cryptography
+# These are required to build the package if a pre-built wheel is not
+# available on PyPI.
+ENV CRYPTOGRAPHY_BUILD_DEPS \
+  cargo \
+  gcc \
+  libffi-dev \
+  musl-dev \
+  openssl-dev \
+  python3-dev
+
+# Dependencies for the LLNL/scraper Python package
+# These are used to estimate labor hours for code.
+ENV SCRAPER_DEPS \
+  cloc \
+  git
+
 ###
 # Unprivileged user setup variables
 ###
@@ -28,7 +45,9 @@ RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
 # Install cloc and git since llnl-scraper requires them to estimate
 # the labor hours.
 ##
-RUN apk --no-cache add cloc git
+RUN apk --no-cache add \
+  $CRYPTOGRAPHY_BUILD_DEPS \
+  $SCRAPER_DEPS
 
 ##
 # Make sure pip and setuptools are the latest versions
