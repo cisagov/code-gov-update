@@ -63,8 +63,8 @@ RUN python -m pip install --no-cache-dir --upgrade --requirement /tmp/requiremen
 # Put this just before we change users because the copy (and every
 # step after it) will often be rerun by docker, but we need to be root
 # for the chown command.
-COPY src/update.sh src/email-update.py src/body.txt src/body.html $CISA_HOME/
-RUN chown -R ${CISA_USER}:${CISA_USER} $CISA_HOME
+COPY src/update.sh src/email-update.py src/body.txt src/body.html ${CISA_HOME}/
+RUN chown -R ${CISA_USER}:${CISA_USER} ${CISA_HOME}
 
 ###
 # Prepare to run
