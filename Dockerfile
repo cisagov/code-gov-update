@@ -9,21 +9,18 @@ FROM python:3.10.5-alpine3.16 as compile-stage
 LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov"
 LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
 
-# Dependencies necessary to build cryptography
-# These are required to build the package if a pre-built wheel is not
-# available on PyPI.
-ENV CRYPTOGRAPHY_BUILD_DEPS \
-  cargo \
-  gcc \
-  libffi-dev \
-  musl-dev \
-  openssl-dev \
-  python3-dev
-
 ##
-# Install the dependencies needed to build the cryptography Python package
+# Install the dependencies necessary to build the cryptography Python
+# package. These are required to build the package if a pre-built wheel
+# is not available on PyPI.
 ##
-RUN apk --no-cache add ${CRYPTOGRAPHY_BUILD_DEPS}
+RUN apk --no-cache add \
+  cargo=1.60.0-r2 \
+  gcc=11.2.1_git20220219-r2 \
+  libffi-dev=3.4.2-r1 \
+  musl-dev=1.2.3-r0 \
+  openssl-dev=1.1.1q-r0 \
+  python3-dev=3.10.5-r0
 
 # The location for the Python venv we will create
 ENV VIRTUAL_ENV="/.venv"
@@ -33,9 +30,13 @@ RUN python -m venv --system-site-packages ${VIRTUAL_ENV}
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
 ##
-# Make sure pip, pipenv, setuptools, and wheel are the latest versions
+# Install core Python packages
 ##
-RUN python -m pip install --no-cache-dir --upgrade pip pipenv setuptools wheel
+RUN python -m pip install --no-cache-dir --upgrade \
+  pip==22.3 \
+  pipenv==2022.10.12 \
+  setuptools==65.5.0 \
+  wheel==0.37.1
 
 ##
 # Install code-gov-update Python requirements
@@ -58,12 +59,6 @@ ENV CISA_HOME="/home/${CISA_USER}"
 # The location for the Python venv we will use
 ENV VIRTUAL_ENV="/.venv"
 
-# Dependencies for the LLNL/scraper Python package
-# These are used to estimate labor hours for code.
-ENV SCRAPER_DEPS \
-  cloc \
-  git
-
 ###
 # Create unprivileged user
 ###
@@ -71,9 +66,12 @@ RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
   && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
 
 ##
-# Install the dependencies for the llnl-scraper Python package
+# Install the dependencies needed by the llnl-scraper Python package to
+# estimate labor hours for code.
 ##
-RUN apk --no-cache add ${SCRAPER_DEPS}
+RUN apk --no-cache add \
+  cloc=1.92-r0 \
+  git=2.36.2-r0
 
 # Copy in the Python venv we created in the compile stage
 COPY --from=compile-stage ${VIRTUAL_ENV} ${VIRTUAL_ENV}
