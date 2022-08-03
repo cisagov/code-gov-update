@@ -1,4 +1,4 @@
-FROM python:3.10.5-alpine3.16
+FROM python:3.10.5-alpine3.16 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -20,35 +20,13 @@ ENV CRYPTOGRAPHY_BUILD_DEPS \
   openssl-dev \
   python3-dev
 
-# Dependencies for the LLNL/scraper Python package
-# These are used to estimate labor hours for code.
-ENV SCRAPER_DEPS \
-  cloc \
-  git
+##
+# Install the dependencies needed to build the cryptography Python package
+##
+RUN apk --no-cache add ${CRYPTOGRAPHY_BUILD_DEPS}
 
-###
-# Unprivileged user setup variables
-###
-ARG CISA_UID=421
-ARG CISA_GID=${CISA_UID}
-ARG CISA_USER="cisa"
-ENV CISA_GROUP=${CISA_USER}
-ENV CISA_HOME="/home/${CISA_USER}"
+# The location for the Python venv we will create
 ENV VIRTUAL_ENV="/.venv"
-
-###
-# Create unprivileged user
-###
-RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
-  && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
-
-##
-# Install cloc and git since llnl-scraper requires them to estimate
-# the labor hours.
-##
-RUN apk --no-cache add \
-  $CRYPTOGRAPHY_BUILD_DEPS \
-  $SCRAPER_DEPS
 
 # Manually set up the Python virtual environment
 RUN python -m venv --system-site-packages ${VIRTUAL_ENV}
@@ -60,15 +38,48 @@ ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 RUN python -m pip install --no-cache-dir --upgrade pip pipenv setuptools wheel
 
 ##
-# Install code-gov-update python requirements
+# Install code-gov-update Python requirements
 ##
 WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
 RUN pipenv sync --clear --verbose
 
-# Put this just before we change users because the copy (and every
-# step after it) will often be rerun by docker, but we need to be root
-# for the chown command.
+FROM python:3.10.5-alpine3.16 as build-stage
+
+###
+# Unprivileged user setup variables
+###
+ARG CISA_UID=421
+ARG CISA_GID=${CISA_UID}
+ARG CISA_USER="cisa"
+ENV CISA_GROUP=${CISA_USER}
+ENV CISA_HOME="/home/${CISA_USER}"
+
+# The location for the Python venv we will use
+ENV VIRTUAL_ENV="/.venv"
+
+# Dependencies for the LLNL/scraper Python package
+# These are used to estimate labor hours for code.
+ENV SCRAPER_DEPS \
+  cloc \
+  git
+
+###
+# Create unprivileged user
+###
+RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
+  && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
+
+##
+# Install the dependencies for the llnl-scraper Python package
+##
+RUN apk --no-cache add ${SCRAPER_DEPS}
+
+# Copy in the Python venv we created in the compile stage
+COPY --from=compile-stage ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
+
+# Copy in the necessary files
 COPY --chown=${CISA_USER}:${CISA_GROUP} src/update.sh src/email-update.py src/body.txt src/body.html ${CISA_HOME}/
 
 ###
