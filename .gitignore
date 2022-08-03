@@ -3,9 +3,10 @@
 # See: https://git-scm.com/docs/gitignore
 
 ## Docker ##
-secrets
+Dockerfile-x
 
 ## Python ##
 __pycache__
 .mypy_cache
+.pytest_cache
 .python-version
