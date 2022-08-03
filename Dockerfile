@@ -34,6 +34,7 @@ ARG CISA_GID=${CISA_UID}
 ARG CISA_USER="cisa"
 ENV CISA_GROUP=${CISA_USER}
 ENV CISA_HOME="/home/${CISA_USER}"
+ENV VIRTUAL_ENV="/.venv"
 
 ###
 # Create unprivileged user
@@ -49,16 +50,21 @@ RUN apk --no-cache add \
   $CRYPTOGRAPHY_BUILD_DEPS \
   $SCRAPER_DEPS
 
+# Manually set up the Python virtual environment
+RUN python -m venv --system-site-packages ${VIRTUAL_ENV}
+ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
+
 ##
-# Make sure pip and setuptools are the latest versions
+# Make sure pip, pipenv, setuptools, and wheel are the latest versions
 ##
-RUN python -m pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN python -m pip install --no-cache-dir --upgrade pip pipenv setuptools wheel
 
 ##
 # Install code-gov-update python requirements
 ##
-COPY src/requirements.txt /tmp
-RUN python -m pip install --no-cache-dir --upgrade --requirement /tmp/requirements.txt
+WORKDIR /tmp
+COPY src/Pipfile src/Pipfile.lock ./
+RUN pipenv sync --clear --verbose
 
 # Put this just before we change users because the copy (and every
 # step after it) will often be rerun by docker, but we need to be root
