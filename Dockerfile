@@ -17,10 +17,18 @@ LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security
 RUN apk --no-cache add \
   cargo=1.60.0-r2 \
   gcc=11.2.1_git20220219-r2 \
+  git=2.36.2-r0 \
   libffi-dev=3.4.2-r1 \
   musl-dev=1.2.3-r0 \
   openssl-dev=1.1.1q-r0 \
   python3-dev=3.10.5-r0
+
+# Configure cargo to use the git CLI instead of the libgit2 library. There is
+# an issue with 32-bit (non-x86) platforms when ligbit2 tries to pull down the
+# cargo package index from GitHub. This *might* be fixed in a more recent version
+# of cargo so it is being tracked in:
+# https://github.com/cisagov/code-gov-update/issues/32
+RUN mkdir --parents ~/.cargo && printf "[net]\ngit-fetch-with-cli = true\n" >> ~/.cargo/config.toml
 
 # The location for the Python venv we will create
 ENV VIRTUAL_ENV="/.venv"

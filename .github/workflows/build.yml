@@ -30,11 +30,17 @@ env:
   IMAGE_NAME: cisagov/code-gov-update
   PIP_CACHE_DIR: ~/.cache/pip
   # The cryptography package for Python only explicitly supports 64-bit
-  # platforms. I observed issues with installation on all of the 32-bit
-  # platforms otherwise available for the base image we use. As a result
-  # the following platforms cannot be supported at present: linux/386,
-  # linux/arm/v5, and linux/arm/v7
-  PLATFORMS: "linux/amd64,linux/arm64/v8"
+  # platforms. There is no cargo package available for linux/s390x to
+  # allow building the cryptography package with Rust. I do not want to
+  # fall back to building with C solely because of an esoteric platform.
+  # It looks like the edge release of Alpine has a cargo package for this
+  # platform so we can look to enable it in a future release if desired.
+  # Please see the following issue to track this:
+  # https://github.com/cisagov/code-gov-update/issues/31
+  # All other platforms can successfully build cryptography if a wheel is
+  # not available on PyPI.
+  PLATFORMS: "linux/386,linux/amd64,linux/arm/v6,\
+  linux/arm/v7,linux/arm64/v8,linux/ppc64le"
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
 
