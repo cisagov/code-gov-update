@@ -26,7 +26,7 @@ RUN apk --no-cache add \
 ENV VIRTUAL_ENV="/.venv"
 
 # Manually set up the Python virtual environment
-RUN python -m venv --system-site-packages ${VIRTUAL_ENV}
+RUN python -m venv ${VIRTUAL_ENV}
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
 ##
