@@ -31,7 +31,7 @@ hosted [here](https://www.dhs.gov/code.json).
 To run the `cisagov/code-gov-update` image via Docker:
 
 ```console
-docker run cisagov/code-gov-update:0.1.0-rc.1
+docker run cisagov/code-gov-update:0.1.0-rc.2
 ```
 
 ### Running with Docker Compose ###
@@ -44,7 +44,7 @@ docker run cisagov/code-gov-update:0.1.0-rc.1
 
     services:
       update:
-        image: 'cisagov/code-gov-update:0.1.0-rc.1'
+        image: 'cisagov/code-gov-update:0.1.0-rc.2'
         init: true
         environment:
           - AWS_CONFIG_FILE=path/to/aws_config
@@ -92,7 +92,7 @@ environment variables.  See the
 
     services:
       update:
-        image: 'cisagov/code-gov-update:0.1.0-rc.1'
+        image: 'cisagov/code-gov-update:0.1.0-rc.2'
         init: true
         secrets:
           - source: aws_config
@@ -131,7 +131,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/code-gov-update:0.1.0-rc.1
+    docker pull cisagov/code-gov-update:0.1.0-rc.2
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
@@ -140,11 +140,11 @@ environment variables.  See the
 
 The images of this container are tagged with [semantic
 versions](https://semver.org).  It is recommended that most users use a version
-tag (e.g. `:0.1.0-rc.1`).
+tag (e.g. `:0.1.0-rc.2`).
 
 | Image:tag | Description |
 |-----------|-------------|
-|`cisagov/code-gov-update:0.1.0-rc.1`| An exact release version. |
+|`cisagov/code-gov-update:0.1.0-rc.2`| An exact release version. |
 |`cisagov/code-gov-update:0.1`| The most recent release matching the major and minor version numbers. |
 |`cisagov/code-gov-update:0`| The most recent release matching the major version number. |
 |`cisagov/code-gov-update:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
@@ -209,7 +209,7 @@ Build the image locally using this git repository as the [build context](https:/
 
 ```console
 docker build \
-  --tag cisagov/code-gov-update:0.1.0-rc.1 \
+  --tag cisagov/code-gov-update:0.1.0-rc.2 \
   https://github.com/cisagov/code-gov-update.git#develop
 ```
 
@@ -240,7 +240,7 @@ Docker:
       --file Dockerfile-x \
       --platform linux/amd64 \
       --output type=docker \
-      --tag cisagov/code-gov-update:0.1.0-rc.1 .
+      --tag cisagov/code-gov-update:0.1.0-rc.2 .
     ```
 
 ## Contributing ##
