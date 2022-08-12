@@ -9,11 +9,9 @@ FROM python:3.10.5-alpine3.16 as compile-stage
 LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov"
 LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
 
-##
 # Install the dependencies necessary to build the cryptography Python
 # package. These are required to build the package if a pre-built wheel
 # is not available on PyPI.
-##
 RUN apk --no-cache add \
   cargo=1.60.0-r2 \
   gcc=11.2.1_git20220219-r2 \
@@ -37,18 +35,14 @@ ENV VIRTUAL_ENV="/.venv"
 RUN python -m venv ${VIRTUAL_ENV}
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 
-##
 # Install core Python packages
-##
 RUN python -m pip install --no-cache-dir --upgrade \
   pip==22.3 \
   pipenv==2022.10.12 \
   setuptools==65.5.0 \
   wheel==0.37.1
 
-##
 # Install code-gov-update Python requirements
-##
 WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
 RUN pipenv sync --clear --verbose
@@ -67,16 +61,12 @@ ENV CISA_HOME="/home/${CISA_USER}"
 # The location for the Python venv we will use
 ENV VIRTUAL_ENV="/.venv"
 
-###
 # Create unprivileged user
-###
 RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
   && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
 
-##
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
-##
 RUN apk --no-cache add \
   cloc=1.92-r0 \
   git=2.36.2-r0
@@ -88,9 +78,7 @@ ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 # Copy in the necessary files
 COPY --chown=${CISA_USER}:${CISA_GROUP} src/update.sh src/email-update.py src/body.txt src/body.html ${CISA_HOME}/
 
-###
-# Prepare to run
-###
+# Prepare to Run
 WORKDIR ${CISA_HOME}
 USER ${CISA_USER}
 ENTRYPOINT ["./update.sh"]
