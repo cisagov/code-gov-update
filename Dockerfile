@@ -1,4 +1,4 @@
-FROM python:3.10.5-alpine3.16 as compile-stage
+FROM python:3.10.8-alpine3.16 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -27,11 +27,11 @@ RUN mkdir --parents ~/.cargo && printf "[net]\ngit-fetch-with-cli = true\n" >> ~
 RUN apk --no-cache add \
   cargo=1.60.0-r2 \
   gcc=11.2.1_git20220219-r2 \
-  git=2.36.2-r0 \
+  git=2.36.3-r0 \
   libffi-dev=3.4.2-r1 \
-  musl-dev=1.2.3-r0 \
-  openssl-dev=1.1.1q-r0 \
-  python3-dev=3.10.5-r0
+  musl-dev=1.2.3-r2 \
+  openssl-dev=1.1.1s-r0 \
+  python3-dev=3.10.8-r0
 
 # Install pipenv to manage installing the Python dependencies into a created
 # Python virtual environment. This is done separately from the virtual
@@ -51,7 +51,7 @@ WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
 RUN pipenv sync --clear --verbose
 
-FROM python:3.10.5-alpine3.16 as build-stage
+FROM python:3.10.8-alpine3.16 as build-stage
 
 ###
 # Unprivileged user setup variables
@@ -71,7 +71,7 @@ RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=1.92-r0 \
-  git=2.36.2-r0
+  git=2.36.3-r0
 
 # Copy in the Python venv we created in the compile stage
 COPY --from=compile-stage --chown=${CISA_USER}:${CISA_GROUP} ${VIRTUAL_ENV} ${VIRTUAL_ENV}
