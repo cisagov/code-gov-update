@@ -1,22 +1,28 @@
 FROM python:3.7.11-slim-stretch
 
+###
 # For a list of pre-defined annotation keys and value types see:
 # https://github.com/opencontainers/image-spec/blob/master/annotations.md
+#
 # Note: Additional labels are added by the build workflow.
-LABEL org.opencontainers.image.authors="jeremy.frasier@trio.dhs.gov"
+###
+LABEL org.opencontainers.image.authors="vm-fusion-dev-group@trio.dhs.gov"
 LABEL org.opencontainers.image.vendor="Cybersecurity and Infrastructure Security Agency"
 
-ARG CISA_GID=421
-ARG CISA_UID=${CISA_GID}
-ENV CISA_USER="cisa"
+###
+# Unprivileged user setup variables
+###
+ARG CISA_UID=421
+ARG CISA_GID=${CISA_UID}
+ARG CISA_USER="cisa"
 ENV CISA_GROUP=${CISA_USER}
-ENV CISA_HOME="/home/cisa"
+ENV CISA_HOME="/home/${CISA_USER}"
 
 ###
 # Create unprivileged user
 ###
-RUN groupadd --system --gid ${CISA_GID} ${CISA_GROUP}
-RUN useradd --system --uid ${CISA_UID} --gid ${CISA_GROUP} --comment "${CISA_USER} user" ${CISA_USER}
+RUN groupadd --system --gid ${CISA_GID} ${CISA_GROUP} \
+    && useradd --system --uid ${CISA_UID} --gid ${CISA_GROUP} --comment "${CISA_USER} user" ${CISA_USER}
 
 ##
 # Install cloc and git since llnl-scraper requires them to estimate
@@ -48,7 +54,8 @@ COPY src/update.sh src/email-update.py src/body.txt src/body.html $CISA_HOME/
 RUN chown -R ${CISA_USER}:${CISA_USER} $CISA_HOME
 
 ###
-# Prepare to Run
+# Prepare to run
 ###
-WORKDIR $CISA_HOME
+WORKDIR ${CISA_HOME}
+USER ${CISA_USER}
 ENTRYPOINT ["./update.sh"]
