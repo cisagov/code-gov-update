@@ -78,11 +78,11 @@ def main():
 
     # Construct and attach the text body
     body = MIMEMultipart("alternative")
-    with open(text_filename, "r") as text:
+    with open(text_filename) as text:
         t = text.read()
         body.attach(MIMEText(t, "plain"))
         logging.debug(f"Message plain-text body is: {t}")
-    with open(html_filename, "r") as html:
+    with open(html_filename) as html:
         h = html.read()
         html_part = MIMEText(h, "html")
         # See https://en.wikipedia.org/wiki/MIME#Content-Disposition
@@ -92,7 +92,7 @@ def main():
     msg.attach(body)
 
     # Attach JSON file
-    with open(json_filename, "r") as attachment:
+    with open(json_filename) as attachment:
         json_part = MIMEApplication(attachment.read(), "json")
         # See https://en.wikipedia.org/wiki/MIME#Content-Disposition
         _, filename = os.path.split(json_filename)
