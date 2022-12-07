@@ -1,4 +1,12 @@
-FROM python:3.10.8-alpine3.17 as compile-stage
+# We use an Alpine base image in the compile-stage because of the build
+# requirements for some of the Python requirements. When the python3-dev
+# package is installed it will also install the python3 package which leaves us
+# with two Python installations if we use a Python Docker image. Instead we use
+# Alpine's python3 package here to create the virtual environment we will use
+# in the Python Docker image we use for the build-stage. The tag of the Python
+# Docker image matches the version of the python3 package available on Alpine
+# for consistency.
+FROM alpine:3.17 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -31,7 +39,9 @@ RUN apk --no-cache add \
   libffi-dev=3.4.4-r0 \
   musl-dev=1.2.3-r4 \
   openssl-dev=3.0.7-r0 \
-  python3-dev=3.10.8-r3
+  py3-pip=22.3.1-r1 \
+  python3-dev=3.10.8-r3 \
+  python3=3.10.8-r3
 
 # Install pipenv to manage installing the Python dependencies into a created
 # Python virtual environment. This is done separately from the virtual
@@ -71,9 +81,12 @@ RUN apk --no-cache add \
   cloc=1.94-r0 \
   git=2.38.1-r0
 
-# Copy in the Python venv we created in the compile stage
+# Copy in the Python venv we created in the compile stage and re-symlink
+# python3 in the venv to the Python binary in this image
 COPY --from=compile-stage --chown=${CISA_USER}:${CISA_GROUP} ${VIRTUAL_ENV} ${VIRTUAL_ENV}
+RUN ln -sf "$(command -v python3)" "${VIRTUAL_ENV}"/bin/python3
 ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
+
 
 # Copy in the necessary files
 COPY --chown=${CISA_USER}:${CISA_GROUP} src/update.sh src/email-update.py src/body.txt src/body.html ${CISA_HOME}/
