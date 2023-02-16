@@ -22,6 +22,12 @@ ARG CISA_USER="cisa"
 ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
+# Versions of the Python packages installed directly
+ENV PYTHON_PIP_VERSION=23.0
+ENV PYTHON_PIPENV_VERSION=2023.2.4
+ENV PYTHON_SETUPTOOLS_VERSION=67.3.2
+ENV PYTHON_WHEEL_VERSION=0.38.4
+
 # Configure cargo to use the git CLI instead of the libgit2 library. There is
 # an issue with 32-bit (non-x86) platforms when ligbit2 tries to pull down the
 # cargo package index from GitHub. This *might* be fixed in a more recent version
@@ -49,14 +55,14 @@ RUN apk --no-cache add \
 # Python virtual environment. This is done separately from the virtual
 # environment so that pipenv and its dependencies are not installed in the
 # Python virtual environment used in the final image.
-RUN python3 -m pip install --no-cache-dir --upgrade pipenv==2022.11.25 \
+RUN python3 -m pip install --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERSION} \
   # Manually create Python virtual environment for the final image
   && python3 -m venv ${VIRTUAL_ENV} \
   # Ensure the core Python packages are installed in the virtual environment
   && ${VIRTUAL_ENV}/bin/python3 -m pip install --no-cache-dir --upgrade \
-    pip==22.3.1 \
-    setuptools==65.6.3 \
-    wheel==0.38.4
+    pip==${PYTHON_PIP_VERSION} \
+    setuptools==${PYTHON_SETUPTOOLS_VERSION} \
+    wheel==${PYTHON_WHEEL_VERSION}
 
 # Install code-gov-update Python requirements
 WORKDIR /tmp
