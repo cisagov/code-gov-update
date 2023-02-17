@@ -28,12 +28,17 @@ ENV PYTHON_PIPENV_VERSION=2023.2.4
 ENV PYTHON_SETUPTOOLS_VERSION=67.3.2
 ENV PYTHON_WHEEL_VERSION=0.38.4
 
+# This argument is automatically set by the --platform flag
+ARG TARGETARCH
+
 # Configure cargo to use the git CLI instead of the libgit2 library. There is
 # an issue with 32-bit (non-x86) platforms when ligbit2 tries to pull down the
 # cargo package index from GitHub. This *might* be fixed in a more recent version
 # of cargo so it is being tracked in:
 # https://github.com/cisagov/code-gov-update/issues/32
-RUN mkdir --parents ~/.cargo && printf "[net]\ngit-fetch-with-cli = true\n" >> ~/.cargo/config.toml
+RUN if [ "$TARGETARCH" != "amd64" -a "$TARGETARCH" != "arm64" ]; \
+  then mkdir --parents ~/.cargo && printf "[net]\ngit-fetch-with-cli = true\n" >> ~/.cargo/config.toml; \
+  fi
 
 # Install the dependencies necessary to build the cryptography Python
 # package. These are required to build the package if a pre-built wheel
