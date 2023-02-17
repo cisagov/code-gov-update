@@ -29,18 +29,8 @@ env:
   CURL_CACHE_DIR: ~/.cache/curl
   IMAGE_NAME: cisagov/code-gov-update
   PIP_CACHE_DIR: ~/.cache/pip
-  # The cryptography package for Python only explicitly supports 64-bit
-  # platforms. There is no cargo package available for linux/s390x to
-  # allow building the cryptography package with Rust. I do not want to
-  # fall back to building with C solely because of an esoteric platform.
-  # It looks like the edge release of Alpine has a cargo package for this
-  # platform so we can look to enable it in a future release if desired.
-  # Please see the following issue to track this:
-  # https://github.com/cisagov/code-gov-update/issues/31
-  # All other platforms can successfully build cryptography if a wheel is
-  # not available on PyPI.
   PLATFORMS: "linux/386,linux/amd64,linux/arm/v6,\
-  linux/arm/v7,linux/arm64/v8,linux/ppc64le"
+  linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x"
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
 
