@@ -99,5 +99,5 @@ COPY --chown=${CISA_USER}:${CISA_GROUP} src/update.sh src/email-update.py src/bo
 
 # Prepare to Run
 WORKDIR ${CISA_HOME}
-USER ${CISA_USER}
+USER ${CISA_USER}:${CISA_GROUP}
 ENTRYPOINT ["./update.sh"]
