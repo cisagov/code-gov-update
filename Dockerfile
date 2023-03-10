@@ -34,7 +34,7 @@ ENV PYTHON_WHEEL_VERSION=0.38.4
 RUN apk --no-cache add \
   cargo=1.64.0-r2 \
   gcc=12.2.1_git20220924-r4 \
-  git=2.38.4-r0 \
+  git=2.38.4-r1 \
   libffi-dev=3.4.4-r0 \
   musl-dev=1.2.3-r4 \
   openssl-dev=3.0.8-r0 \
@@ -81,7 +81,7 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=1.94-r0 \
-  git=2.38.4-r0
+  git=2.38.4-r1
 
 # Create unprivileged user
 RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
