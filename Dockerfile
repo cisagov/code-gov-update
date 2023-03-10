@@ -28,9 +28,6 @@ ENV PYTHON_PIPENV_VERSION=2023.2.4
 ENV PYTHON_SETUPTOOLS_VERSION=67.3.2
 ENV PYTHON_WHEEL_VERSION=0.38.4
 
-# Copy in our custom Cargo configuration file
-COPY src/config.toml /root/.cargo/
-
 # Install the dependencies necessary to build the cryptography Python
 # package. These are required to build the package if a pre-built wheel
 # is not available on PyPI.
@@ -46,6 +43,9 @@ RUN apk --no-cache add \
   py3-wheel=0.38.4-r0 \
   python3-dev=3.10.10-r0 \
   python3=3.10.10-r0
+
+# Copy in our custom Cargo configuration file
+COPY src/config.toml /root/.cargo/
 
 # Install pipenv to manage installing the Python dependencies into a created
 # Python virtual environment. This is done separately from the virtual
@@ -77,15 +77,15 @@ ENV CISA_GROUP=${CISA_USER}
 ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
-# Create unprivileged user
-RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
-  && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
-
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=1.94-r0 \
   git=2.38.4-r0
+
+# Create unprivileged user
+RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
+  && adduser --system --uid ${CISA_UID} --ingroup ${CISA_GROUP} ${CISA_USER}
 
 # Copy in the Python venv we created in the compile stage and re-symlink
 # python3 in the venv to the Python binary in this image
