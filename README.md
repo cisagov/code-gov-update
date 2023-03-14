@@ -8,7 +8,7 @@
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/cisagov/code-gov-update)](https://hub.docker.com/r/cisagov/code-gov-update)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cisagov/code-gov-update)](https://hub.docker.com/r/cisagov/code-gov-update)
-[![Platforms](https://img.shields.io/badge/platforms-amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%20%7C%20ppc64le%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/code-gov-update/tags)
+[![Platforms](https://img.shields.io/badge/platforms-386%20%7C%20amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%2Fv8%20%7C%20ppc64le%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/code-gov-update/tags)
 
 This project contains code for updating the DHS
 [code.gov](https://code.gov) inventory published
@@ -31,7 +31,7 @@ hosted [here](https://www.dhs.gov/code.json).
 To run the `cisagov/code-gov-update` image via Docker:
 
 ```console
-docker run cisagov/code-gov-update:0.1.0-rc.1
+docker run cisagov/code-gov-update:0.1.0-rc.4
 ```
 
 ### Running with Docker Compose ###
@@ -44,7 +44,7 @@ docker run cisagov/code-gov-update:0.1.0-rc.1
 
     services:
       update:
-        image: 'cisagov/code-gov-update:0.1.0-rc.1'
+        image: 'cisagov/code-gov-update:0.1.0-rc.4'
         init: true
         environment:
           - AWS_CONFIG_FILE=path/to/aws_config
@@ -92,7 +92,7 @@ environment variables.  See the
 
     services:
       update:
-        image: 'cisagov/code-gov-update:0.1.0-rc.1'
+        image: 'cisagov/code-gov-update:0.1.0-rc.4'
         init: true
         secrets:
           - source: aws_config
@@ -131,7 +131,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/code-gov-update:0.1.0-rc.1
+    docker pull cisagov/code-gov-update:0.1.0-rc.4
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
@@ -140,11 +140,11 @@ environment variables.  See the
 
 The images of this container are tagged with [semantic
 versions](https://semver.org).  It is recommended that most users use a version
-tag (e.g. `:0.1.0-rc.1`).
+tag (e.g. `:0.1.0-rc.4`).
 
 | Image:tag | Description |
 |-----------|-------------|
-|`cisagov/code-gov-update:0.1.0-rc.1`| An exact release version. |
+|`cisagov/code-gov-update:0.1.0-rc.4`| An exact release version. |
 |`cisagov/code-gov-update:0.1`| The most recent release matching the major and minor version numbers. |
 |`cisagov/code-gov-update:0`| The most recent release matching the major version number. |
 |`cisagov/code-gov-update:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
@@ -209,7 +209,7 @@ Build the image locally using this git repository as the [build context](https:/
 
 ```console
 docker build \
-  --tag cisagov/code-gov-update:0.1.0-rc.1 \
+  --tag cisagov/code-gov-update:0.1.0-rc.4 \
   https://github.com/cisagov/code-gov-update.git#develop
 ```
 
@@ -240,7 +240,7 @@ Docker:
       --file Dockerfile-x \
       --platform linux/amd64 \
       --output type=docker \
-      --tag cisagov/code-gov-update:0.1.0-rc.1 .
+      --tag cisagov/code-gov-update:0.1.0-rc.4 .
     ```
 
 ## Contributing ##

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """email-update.py is a tool for sending an updated code.gov JSON file.
 
 Usage:
