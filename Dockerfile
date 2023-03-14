@@ -97,7 +97,7 @@ ENV PATH="${VIRTUAL_ENV}/bin:$PATH"
 # Copy in the necessary files
 COPY --chown=${CISA_USER}:${CISA_GROUP} src/update.sh src/email-update.py src/body.txt src/body.html ${CISA_HOME}/
 
-# Prepare to Run
+# Prepare to run
 WORKDIR ${CISA_HOME}
 USER ${CISA_USER}:${CISA_GROUP}
 ENTRYPOINT ["./update.sh"]

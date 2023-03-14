@@ -1,6 +1,6 @@
 [net]
 # Configure Cargo to use the git CLI instead of the libgit2 library. There is
-# an issue with 32-bit (non-x86) platforms when ligbit2 tries to pull down the
+# an issue with 32-bit (non-x86) platforms when libgit2 tries to pull down the
 # Cargo package index from GitHub. This *might* get fixed in a later version
 # of Cargo so it is being tracked in:
 # https://github.com/cisagov/code-gov-update/issues/32
