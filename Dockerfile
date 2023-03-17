@@ -67,7 +67,7 @@ RUN pipenv sync --clear --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
-FROM python:3.10.10-alpine3.17 as build-stage
+FROM python:3.11.2-alpine3.17 as build-stage
 
 # Unprivileged user information
 ARG CISA_UID=2048
