@@ -34,15 +34,15 @@ ENV PYTHON_WHEEL_VERSION=0.40.0
 RUN apk --no-cache add \
   cargo=1.64.0-r2 \
   gcc=12.2.1_git20220924-r4 \
-  git=2.38.4-r1 \
+  git=2.38.5-r0 \
   libffi-dev=3.4.4-r0 \
-  musl-dev=1.2.3-r4 \
-  openssl-dev=3.0.8-r0 \
+  musl-dev=1.2.3-r5 \
+  openssl-dev=3.0.9-r3 \
   py3-pip=22.3.1-r1 \
   py3-setuptools=65.6.0-r0 \
   py3-wheel=0.38.4-r0 \
-  python3-dev=3.10.10-r0 \
-  python3=3.10.10-r0
+  python3-dev=3.10.12-r0 \
+  python3=3.10.12-r0
 
 # Copy in our custom Cargo configuration file
 COPY src/config.toml /root/.cargo/
@@ -81,7 +81,7 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=1.94-r0 \
-  git=2.38.4-r1
+  git=2.38.5-r0
 
 # Create unprivileged user
 RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
