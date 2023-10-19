@@ -37,12 +37,12 @@ RUN apk --no-cache add \
   git=2.38.5-r0 \
   libffi-dev=3.4.4-r0 \
   musl-dev=1.2.3-r5 \
-  openssl-dev=3.0.9-r3 \
+  openssl-dev=3.0.11-r0 \
   py3-pip=22.3.1-r1 \
   py3-setuptools=65.6.0-r0 \
   py3-wheel=0.38.4-r0 \
-  python3-dev=3.10.12-r0 \
-  python3=3.10.12-r0
+  python3-dev=3.10.13-r0 \
+  python3=3.10.13-r0
 
 # Copy in our custom Cargo configuration file
 COPY src/config.toml /root/.cargo/
