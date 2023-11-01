@@ -7,8 +7,10 @@ name = "pypi"
 # Minimum version for IMDSv2 support
 boto3 = ">=1.13.23"
 docopt = ">=0.6.2"
-# Use our fork for required functionality that is not in LLNL/scraper yet.
-llnl-scraper = {file = "https://github.com/cisagov/scraper/archive/v0.14.0-dev.tar.gz"}
+# Since there is not a new release on PyPI with it we are using this commit to
+# get a bugfix for newer cloc version behavior from:
+# https://github.com/LLNL/scraper/pull/79
+llnl-scraper = {file = "https://api.github.com/repos/LLNL/scraper/tarball/536a72ce1ceb2e209281ff72a2ed59e735d45c33"}
 
 [requires]
 python_full_version = "3.11.8"
