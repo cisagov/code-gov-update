@@ -63,7 +63,8 @@ RUN python3 -m pip install --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERS
 # Install code-gov-update Python requirements
 WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
-RUN pipenv sync --clear --verbose
+RUN pipenv check --verbose \
+  && pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
