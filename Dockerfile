@@ -6,7 +6,7 @@
 # in the Python Docker image we use for the build-stage. The tag of the Python
 # Docker image matches the version of the python3 package available on Alpine
 # for consistency.
-FROM alpine:3.18 as compile-stage
+FROM alpine:3.19 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
