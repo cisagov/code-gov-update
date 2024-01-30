@@ -37,7 +37,7 @@ RUN apk --no-cache add \
   git=2.40.1-r0 \
   libffi-dev=3.4.4-r2 \
   musl-dev=1.2.4-r2 \
-  openssl-dev=3.1.4-r4 \
+  openssl-dev=3.1.4-r5 \
   py3-pip=23.1.2-r0 \
   py3-setuptools=67.7.2-r0 \
   py3-wheel=0.40.0-r1 \
