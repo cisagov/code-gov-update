@@ -41,8 +41,8 @@ RUN apk --no-cache add \
   py3-pip=23.1.2-r0 \
   py3-setuptools=67.7.2-r0 \
   py3-wheel=0.40.0-r1 \
-  python3-dev=3.11.6-r0 \
-  python3=3.11.6-r0
+  python3-dev=3.11.8-r0 \
+  python3=3.11.8-r0
 
 # Copy in our custom Cargo configuration file
 COPY src/config.toml /root/.cargo/
