@@ -44,9 +44,6 @@ RUN apk --no-cache add \
   python3-dev=3.12.7-r0 \
   python3=3.12.7-r0
 
-# Copy in our custom Cargo configuration file
-COPY src/config.toml /root/.cargo/
-
 # Install pipenv to manage installing the Python dependencies into a created
 # Python virtual environment. This is done separately from the virtual
 # environment so that pipenv and its dependencies are not installed in the
