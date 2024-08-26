@@ -6,7 +6,7 @@
 # in the Python Docker image we use for the build-stage. The tag of the Python
 # Docker image matches the version of the python3 package available on Alpine
 # for consistency.
-FROM alpine:3.18 as compile-stage
+FROM alpine:3.20 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -32,17 +32,17 @@ ENV PYTHON_WHEEL_VERSION=0.40.0
 # package. These are required to build the package if a pre-built wheel
 # is not available on PyPI.
 RUN apk --no-cache add \
-  cargo=1.71.1-r0 \
-  gcc=12.2.1_git20220924-r10 \
-  git=2.40.1-r0 \
-  libffi-dev=3.4.4-r2 \
-  musl-dev=1.2.4-r2 \
-  openssl-dev=3.1.5-r0 \
-  py3-pip=23.1.2-r0 \
-  py3-setuptools=67.7.2-r0 \
-  py3-wheel=0.40.0-r1 \
-  python3-dev=3.11.8-r0 \
-  python3=3.11.8-r0
+  cargo=1.78.0-r0 \
+  gcc=13.2.1_git20240309-r0 \
+  git=2.45.2-r0 \
+  libffi-dev=3.4.6-r0 \
+  musl-dev=1.2.5-r0 \
+  openssl-dev=3.3.2-r0 \
+  py3-pip=24.0-r2 \
+  py3-setuptools=70.3.0-r0 \
+  py3-wheel=0.42.0-r1 \
+  python3-dev=3.12.7-r0 \
+  python3=3.12.7-r0
 
 # Copy in our custom Cargo configuration file
 COPY src/config.toml /root/.cargo/
