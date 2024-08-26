@@ -51,7 +51,7 @@ COPY src/config.toml /root/.cargo/
 # Python virtual environment. This is done separately from the virtual
 # environment so that pipenv and its dependencies are not installed in the
 # Python virtual environment used in the final image.
-RUN python3 -m pip install --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERSION} \
+RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERSION} \
   # Manually create Python virtual environment for the final image
   && python3 -m venv ${VIRTUAL_ENV} \
   # Ensure the core Python packages are installed in the virtual environment
