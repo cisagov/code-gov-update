@@ -67,7 +67,7 @@ RUN pipenv sync --clear --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
-FROM python:3.11.6-alpine3.18 as build-stage
+FROM python:3.12.7-alpine3.20 as build-stage
 
 # Unprivileged user information
 ARG CISA_UID=2048
@@ -80,8 +80,8 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
-  cloc=1.96-r0 \
-  git=2.40.1-r0
+  cloc=2.00-r0 \
+  git=2.45.2-r0
 
 # Create unprivileged user
 RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
