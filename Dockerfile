@@ -23,10 +23,10 @@ ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
 # Versions of the Python packages installed directly
-ENV PYTHON_PIP_VERSION=23.1.2
-ENV PYTHON_PIPENV_VERSION=2023.10.20
-ENV PYTHON_SETUPTOOLS_VERSION=67.7.2
-ENV PYTHON_WHEEL_VERSION=0.40.0
+ENV PYTHON_PIP_VERSION=24.2
+ENV PYTHON_PIPENV_VERSION=2024.1.0
+ENV PYTHON_SETUPTOOLS_VERSION=75.1.0
+ENV PYTHON_WHEEL_VERSION=0.44.0
 
 # Install the dependencies necessary to build the cryptography Python
 # package. These are required to build the package if a pre-built wheel
