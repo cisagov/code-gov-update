@@ -1,7 +1,7 @@
 {
   "_meta": {
     "hash": {
-      "sha256": "67a89f7ad05f803622068c2f4b0343363e201807ac32b4d71d5dc0f13b3775ca"
+      "sha256": "3416f8ddf679cefd1e3c7e1c0b7b056be5f7da5ebafb92fc294fac9a8b29f816"
     },
     "pipfile-spec": 6,
     "requires": {
@@ -289,7 +289,7 @@
       "version": "==1.0.1"
     },
     "llnl-scraper": {
-      "file": "https://github.com/cisagov/scraper/archive/v0.14.0-dev.tar.gz",
+      "file": "https://api.github.com/repos/LLNL/scraper/tarball/536a72ce1ceb2e209281ff72a2ed59e735d45c33",
       "markers": "python_version >= '3.6'"
     },
     "msrest": {
