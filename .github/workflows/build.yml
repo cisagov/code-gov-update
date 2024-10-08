@@ -29,8 +29,13 @@ env:
   CURL_CACHE_DIR: ~/.cache/curl
   IMAGE_NAME: cisagov/code-gov-update
   PIP_CACHE_DIR: ~/.cache/pip
-  PLATFORMS: "linux/386,linux/amd64,linux/arm/v6,\
-  linux/arm/v7,linux/arm64/v8,linux/ppc64le,linux/s390x"
+  # We have dropped support for the linux/arm/v6, linux/ppc64le, and linux/s390x
+  # platforms until the run time for the build-push-all job can get below the six
+  # hour limit that exists for GitHub Actions runners. This could either be through
+  # some kind of optimization, when we matrix out the build so each platform runs
+  # on its own runner, or if we start using our own runners that have a higher
+  # time limit. Please see #150 for tracking.
+  PLATFORMS: "linux/386,linux/amd64,linux/arm/v7,linux/arm64/v8"
   PRE_COMMIT_CACHE_DIR: ~/.cache/pre-commit
   RUN_TMATE: ${{ secrets.RUN_TMATE }}
 
