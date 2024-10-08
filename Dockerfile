@@ -6,7 +6,7 @@
 # in the Python Docker image we use for the build-stage. The tag of the Python
 # Docker image matches the version of the python3 package available on Alpine
 # for consistency.
-FROM alpine:3.18 as compile-stage
+FROM alpine:3.20 as compile-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -23,26 +23,26 @@ ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
 # Versions of the Python packages installed directly
-ENV PYTHON_PIP_VERSION=23.1.2
-ENV PYTHON_PIPENV_VERSION=2023.10.20
-ENV PYTHON_SETUPTOOLS_VERSION=67.7.2
-ENV PYTHON_WHEEL_VERSION=0.40.0
+ENV PYTHON_PIP_VERSION=24.2
+ENV PYTHON_PIPENV_VERSION=2024.1.0
+ENV PYTHON_SETUPTOOLS_VERSION=75.1.0
+ENV PYTHON_WHEEL_VERSION=0.44.0
 
 # Install the dependencies necessary to build the cryptography Python
 # package. These are required to build the package if a pre-built wheel
 # is not available on PyPI.
 RUN apk --no-cache add \
-  cargo=1.71.1-r0 \
-  gcc=12.2.1_git20220924-r10 \
-  git=2.40.1-r0 \
-  libffi-dev=3.4.4-r2 \
-  musl-dev=1.2.4-r2 \
-  openssl-dev=3.1.5-r0 \
-  py3-pip=23.1.2-r0 \
-  py3-setuptools=67.7.2-r0 \
-  py3-wheel=0.40.0-r1 \
-  python3-dev=3.11.8-r0 \
-  python3=3.11.8-r0
+  cargo=1.78.0-r0 \
+  gcc=13.2.1_git20240309-r0 \
+  git=2.45.2-r0 \
+  libffi-dev=3.4.6-r0 \
+  musl-dev=1.2.5-r0 \
+  openssl-dev=3.3.2-r0 \
+  py3-pip=24.0-r2 \
+  py3-setuptools=70.3.0-r0 \
+  py3-wheel=0.42.0-r1 \
+  python3-dev=3.12.7-r0 \
+  python3=3.12.7-r0
 
 # Copy in our custom Cargo configuration file
 COPY src/config.toml /root/.cargo/
@@ -51,7 +51,7 @@ COPY src/config.toml /root/.cargo/
 # Python virtual environment. This is done separately from the virtual
 # environment so that pipenv and its dependencies are not installed in the
 # Python virtual environment used in the final image.
-RUN python3 -m pip install --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERSION} \
+RUN python3 -m pip install --break-system-packages --no-cache-dir --upgrade pipenv==${PYTHON_PIPENV_VERSION} \
   # Manually create Python virtual environment for the final image
   && python3 -m venv ${VIRTUAL_ENV} \
   # Ensure the core Python packages are installed in the virtual environment
@@ -67,7 +67,7 @@ RUN pipenv sync --clear --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
-FROM python:3.11.6-alpine3.18 as build-stage
+FROM python:3.12.7-alpine3.20 as build-stage
 
 # Unprivileged user information
 ARG CISA_UID=2048
@@ -80,8 +80,8 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
-  cloc=1.96-r0 \
-  git=2.40.1-r0
+  cloc=2.00-r0 \
+  git=2.45.2-r0
 
 # Create unprivileged user
 RUN addgroup --system --gid ${CISA_GID} ${CISA_GROUP} \
