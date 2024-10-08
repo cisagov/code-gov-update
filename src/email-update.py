@@ -99,8 +99,8 @@ def main():
     msg.attach(json_part)
 
     # Send the email
-    ses_client = boto3.client("ses")
-    response = ses_client.send_raw_email(RawMessage={"Data": msg.as_string()})
+    ses_client = boto3.client("sesv2")
+    response = ses_client.send_email(Content={"Raw": {"Data": msg.as_string()}})
     # Check for errors
     status_code = response["ResponseMetadata"]["HTTPStatusCode"]
     if status_code != 200:
