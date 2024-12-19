@@ -231,7 +231,7 @@ There are no optional environment variables.
 | Filename | Purpose |
 |----------|---------|
 | `aws_config` | Provides the necessary AWS authentication to send email using SES. |
-| `scraper.json` | Provides the configuration to use for LLNL/scraper.
+| `scraper.json` | Provides the configuration to use for LLNL/scraper. |
 
 ## Building from source ##
 
