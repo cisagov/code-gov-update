@@ -34,8 +34,8 @@ RUN apk --no-cache add \
   py3-pip=24.0-r2 \
   py3-setuptools=70.3.0-r0 \
   py3-wheel=0.42.0-r1 \
-  python3-dev=3.12.7-r0 \
-  python3=3.12.7-r0
+  python3-dev=3.12.8-r1 \
+  python3=3.12.8-r1
 
 ###
 # Install the specified versions of pip, setuptools, and wheel into the system
@@ -75,7 +75,7 @@ RUN pipenv check --verbose \
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
-FROM docker.io/library/python:3.12.7-alpine3.20 AS build-stage
+FROM docker.io/library/python:3.12.8-alpine3.20 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
