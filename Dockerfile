@@ -21,16 +21,10 @@ ENV PYTHON_PIPENV_VERSION=2024.1.0
 ENV PYTHON_SETUPTOOLS_VERSION=75.1.0
 ENV PYTHON_WHEEL_VERSION=0.44.0
 
-# Install the dependencies necessary to build the cryptography Python
-# package. These are required to build the package if a pre-built wheel
-# is not available on PyPI.
+# Install the system package dependencies necessary to set up the image's Python
+# virtual environment.
 RUN apk --no-cache add \
-  cargo=1.78.0-r0 \
-  gcc=13.2.1_git20240309-r0 \
-  git=2.45.2-r0 \
-  libffi-dev=3.4.6-r0 \
-  musl-dev=1.2.5-r0 \
-  openssl-dev=3.3.2-r1 \
+  py3-cryptography=42.0.7-r0 \
   py3-pip=24.0-r2 \
   py3-setuptools=70.3.0-r0 \
   py3-wheel=0.42.0-r1 \
@@ -57,7 +51,7 @@ RUN python3 -m venv --system-site-packages /usr/local \
     && /usr/local/bin/python3 -m pip install --no-cache-dir --upgrade \
         pipenv==${PYTHON_PIPENV_VERSION} \
     # Manually create the virtual environment
-    && python3 -m venv ${VIRTUAL_ENV} \
+    && python3 -m venv --system-site-packages ${VIRTUAL_ENV} \
     # Ensure the core Python packages are installed in the virtual environment
     && ${VIRTUAL_ENV}/bin/python3 -m pip install --no-cache-dir --upgrade \
         pip==${PYTHON_PIP_VERSION} \
@@ -103,7 +97,8 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=2.00-r0 \
-  git=2.45.2-r0
+  git=2.45.2-r0 \
+  py3-cryptography=42.0.7-r0
 
 ###
 # Create unprivileged user
