@@ -16,10 +16,10 @@ ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
 # Versions of the Python packages installed directly
-ENV PYTHON_PIP_VERSION=24.2
-ENV PYTHON_PIPENV_VERSION=2024.1.0
-ENV PYTHON_SETUPTOOLS_VERSION=75.1.0
-ENV PYTHON_WHEEL_VERSION=0.44.0
+ENV PYTHON_PIP_VERSION=24.3.1
+ENV PYTHON_PIPENV_VERSION=2024.4.0
+ENV PYTHON_SETUPTOOLS_VERSION=75.8.0
+ENV PYTHON_WHEEL_VERSION=0.45.1
 
 # Install the system package dependencies necessary to set up the image's Python
 # virtual environment.
@@ -97,7 +97,7 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=2.02-r0 \
-  git=2.47.1-r0 \
+  git=2.47.2-r0 \
   py3-cryptography=44.0.0-r0
 
 ###
