@@ -40,7 +40,7 @@ docker run cisagov/code-gov-update:0.3.0-rc.4
 
     ```yaml
     ---
-    name: skeleton-docker
+    name: code-gov-update
 
     services:
       update:
@@ -82,7 +82,7 @@ environment variables.  See the
 
     ```yaml
     ---
-    name: skeleton-docker
+    name: code-gov-update
 
     secrets:
       aws_config:
