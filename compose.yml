@@ -1,7 +1,7 @@
 ---
-version: '3.7'
+# This Docker composition file is used to build and test the container
 
-# This docker-compose file is used to build and test the container
+name: skeleton-docker
 
 secrets:
   aws_config:
@@ -14,6 +14,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    environment:
+      - AWS_CONFIG_FILE=/run/secrets/aws_config
+      - AWS_PROFILE=default
     image: cisagov/code-gov-update
     init: true
     secrets:
@@ -21,6 +24,3 @@ services:
         target: aws_config
       - source: scraper_config
         target: scraper_config.json
-    environment:
-      - AWS_CONFIG_FILE=/run/secrets/aws_config
-      - AWS_PROFILE=default
