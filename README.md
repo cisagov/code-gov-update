@@ -36,19 +36,19 @@ docker run cisagov/code-gov-update:0.3.0-rc.4
 
 ### Running with Docker Compose ###
 
-1. Create a `docker-compose.yml` file similar to the one below to use [Docker Compose](https://docs.docker.com/compose/).
+1. Create a `compose.yml` file similar to the one below to use [Docker Compose](https://docs.docker.com/compose/).
 
     ```yaml
     ---
-    version: '3.7'
+    name: code-gov-update
 
     services:
       update:
-        image: cisagov/code-gov-update:0.3.0-rc.4
-        init: true
         environment:
           - AWS_CONFIG_FILE=path/to/aws_config
           - AWS_PROFILE=default
+        image: cisagov/code-gov-update:0.3.0-rc.4
+        init: true
     ```
 
 1. Start the container and detach:
@@ -78,11 +78,11 @@ environment variables.  See the
     Please see the [documentation](https://github.com/LLNL/scraper#config-file-options)
     for creating your own `scraper.json` configuration file.
 
-1. Then add the secrets to your `docker-compose.yml` file:
+1. Then add the secrets to your `compose.yml` file:
 
     ```yaml
     ---
-    version: '3.7'
+    name: code-gov-update
 
     secrets:
       aws_config:
@@ -92,6 +92,9 @@ environment variables.  See the
 
     services:
       update:
+        environment:
+          - AWS_CONFIG_FILE=/run/secrets/aws_config
+          - AWS_PROFILE=default
         image: cisagov/code-gov-update:0.3.0-rc.4
         init: true
         secrets:
@@ -99,9 +102,6 @@ environment variables.  See the
             target: aws_config
           - source: scraper_config
             target: scraper_config.json
-        environment:
-          - AWS_CONFIG_FILE=/run/secrets/aws_config
-          - AWS_PROFILE=default
     ```
 
 ## Updating your container ##
@@ -161,9 +161,9 @@ If you want to add or remove dependencies you would update the `src/Pipfile` fil
 and then update dependencies as you would above.
 
 > [!NOTE]
-> You should only specify packages that are explicitly needed for your Docker
-> configuration. Allow [Pipenv] to manage the dependencies of the specified
-> packages.
+> You should only specify packages that are direct requirements of
+> your Docker configuration. Allow [Pipenv] to manage the dependencies
+> of the specified packages.
 
 ## Image tags ##
 
