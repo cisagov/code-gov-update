@@ -66,7 +66,7 @@ RUN python3 -m venv --system-site-packages /usr/local \
 # environment variable is set.
 ###
 WORKDIR /tmp
-COPY src/Pipfile src/Pipfile.lock ./
+COPY src/.safety-policy.yml src/Pipfile src/Pipfile.lock ./
 RUN pipenv check --verbose \
     && pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
 
