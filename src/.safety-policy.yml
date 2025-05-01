@@ -1,0 +1,15 @@
+---
+# Safety Security and License Configuration file
+security: # configuration for the `safety check` command
+  ignore-vulnerabilities:
+    # The version of cryptography has a statically linked copy of OpenSSL included
+    # in its wheels. Since we use the Alpine Linux system package it is not subject
+    # to this vulnerability.
+    76170:
+      # The release of Alpine Linux 3.22 should resolve this issue due to package
+      # versions available.
+      expires: 2025-06-01
+      reason: >-
+        We are using the py3-cryptography system package which uses the system
+        version of OpenSSL. In this Docker configuration the version of OpenSSL
+        installed is not vulnerable.
