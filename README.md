@@ -2,13 +2,12 @@
 
 [![GitHub Build Status](https://github.com/cisagov/code-gov-update/workflows/build/badge.svg)](https://github.com/cisagov/code-gov-update/actions/workflows/build.yml)
 [![CodeQL](https://github.com/cisagov/code-gov-update/workflows/CodeQL/badge.svg)](https://github.com/cisagov/code-gov-update/actions/workflows/codeql-analysis.yml)
-[![Known Vulnerabilities](https://snyk.io/test/github/cisagov/code-gov-update/badge.svg)](https://snyk.io/test/github/cisagov/code-gov-update)
 
 ## Docker Image ##
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/cisagov/code-gov-update)](https://hub.docker.com/r/cisagov/code-gov-update)
 [![Docker Image Size (latest by date)](https://img.shields.io/docker/image-size/cisagov/code-gov-update)](https://hub.docker.com/r/cisagov/code-gov-update)
-[![Platforms](https://img.shields.io/badge/platforms-386%20%7C%20amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%2Fv8-blue)](https://hub.docker.com/r/cisagov/code-gov-update/tags)
+[![Platforms](https://img.shields.io/badge/platforms-386%20%7C%20amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%2Fv8%20%7C%20ppc64le%20%7C%20riscv64%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/code-gov-update/tags)
 
 This project contains code for updating the DHS
 [code.gov](https://code.gov) inventory published
