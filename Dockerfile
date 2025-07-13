@@ -6,7 +6,7 @@
 # in the Python Docker image we use for the build-stage. The tag of the Python
 # Docker image matches the version of the python3 package available on Alpine
 # for consistency.
-FROM docker.io/library/alpine:3.21 AS compile-stage
+FROM docker.io/library/alpine:3.22 AS compile-stage
 
 ###
 # Unprivileged user variables
@@ -24,12 +24,12 @@ ENV PYTHON_WHEEL_VERSION=0.45.1
 # Install the system package dependencies necessary to set up the image's Python
 # virtual environment.
 RUN apk --no-cache add \
-  py3-cryptography=44.0.0-r0 \
-  py3-pip=24.3.1-r0 \
-  py3-setuptools=70.3.0-r0 \
-  py3-wheel=0.43.0-r0 \
-  python3-dev=3.12.10-r0 \
-  python3=3.12.10-r0
+  py3-cryptography=44.0.3-r0 \
+  py3-pip=25.1.1-r0 \
+  py3-setuptools=80.9.0-r0 \
+  py3-wheel=0.46.1-r0 \
+  python3-dev=3.12.11-r0 \
+  python3=3.12.11-r0
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668); install the
@@ -72,7 +72,7 @@ RUN pipenv check --verbose \
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
-FROM docker.io/library/python:3.12.10-alpine3.21 AS build-stage
+FROM docker.io/library/python:3.12.11-alpine3.22 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -96,9 +96,9 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
-  cloc=2.02-r0 \
-  git=2.47.2-r0 \
-  py3-cryptography=44.0.0-r0
+  cloc=2.04-r0 \
+  git=2.49.1-r0 \
+  py3-cryptography=44.0.3-r0
 
 ###
 # Create unprivileged user
