@@ -35,7 +35,7 @@ updates:
       # Managed by cisagov/skeleton-docker
       - dependency-name: actions/download-artifact
       - dependency-name: actions/upload-artifact
-      # - dependency-name: aquasecurity/trivy-action
+      - dependency-name: aquasecurity/trivy-action
       - dependency-name: docker/build-push-action
       - dependency-name: docker/login-action
       - dependency-name: docker/metadata-action
