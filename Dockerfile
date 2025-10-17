@@ -31,8 +31,8 @@ RUN apk --no-cache add \
   py3-pip=25.1.1-r0 \
   py3-setuptools=80.9.0-r0 \
   py3-wheel=0.46.1-r0 \
-  python3-dev=3.12.11-r0 \
-  python3=3.12.11-r0
+  python3-dev=3.12.12-r0 \
+  python3=3.12.12-r0
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668); install the
@@ -78,7 +78,7 @@ RUN pipenv check --verbose \
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.12.11-alpine3.22 AS build-stage
+FROM docker.io/library/python:3.12.12-alpine3.22 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
