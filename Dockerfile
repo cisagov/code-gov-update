@@ -6,6 +6,9 @@
 # in the Python Docker image we use for the build-stage. The tag of the Python
 # Docker image matches the version of the python3 package available on Alpine
 # for consistency.
+#
+# Official Docker images are in the form library/<app> while non-official
+# images are in the form <user>/<app>.
 FROM docker.io/library/alpine:3.22 AS compile-stage
 
 ###
@@ -72,6 +75,9 @@ RUN pipenv check --verbose \
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
+#
+# Official Docker images are in the form library/<app> while non-official
+# images are in the form <user>/<app>.
 FROM docker.io/library/python:3.12.11-alpine3.22 AS build-stage
 
 ###
