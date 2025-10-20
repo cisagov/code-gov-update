@@ -27,6 +27,9 @@ ENV PYTHON_WHEEL_VERSION=0.45.1
 # Install the system package dependencies necessary to set up the image's Python
 # virtual environment.
 RUN apk --no-cache add \
+  gcc=14.2.0-r6 \
+  libffi-dev=3.4.8-r0 \
+  musl-dev=1.2.5-r10 \
   py3-cryptography=44.0.3-r0 \
   py3-pip=25.1.1-r0 \
   py3-setuptools=80.9.0-r0 \
