@@ -10,8 +10,8 @@
 [![Platforms](https://img.shields.io/badge/platforms-386%20%7C%20amd64%20%7C%20arm%2Fv6%20%7C%20arm%2Fv7%20%7C%20arm64%2Fv8%20%7C%20ppc64le%20%7C%20riscv64%20%7C%20s390x-blue)](https://hub.docker.com/r/cisagov/code-gov-update/tags)
 
 This project contains code for updating the DHS
-[code.gov](https://code.gov) inventory published
-[here](https://www.dhs.gov/code.json).
+[code.gov](https://code.gov)
+[inventory file](https://www.dhs.gov/code.json).
 
 ## How it works ##
 
@@ -20,8 +20,8 @@ scrape a handful of GitHub organizations that belong to DHS and
 produce an updated JSON file per [the code.gov
 specification](https://code.gov/about/compliance/inventory-code).  If
 that file differs from the previously-generated one, it is emailed to
-the appropriate address so that it can be used to update the content
-hosted [here](https://www.dhs.gov/code.json).
+the appropriate address so that it can be used to update the [content
+hosted by DHS](https://www.dhs.gov/code.json).
 
 ## Running ##
 
