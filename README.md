@@ -11,7 +11,7 @@
 
 This project contains code for updating the DHS
 [code.gov](https://code.gov)
-[inventory](https://www.dhs.gov/code.json).
+[inventory file](https://www.dhs.gov/code.json).
 
 ## How it works ##
 
