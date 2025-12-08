@@ -9,7 +9,7 @@
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/alpine:3.22 AS compile-stage
+FROM docker.io/library/alpine:3.23 AS compile-stage
 
 ###
 # Unprivileged user variables
