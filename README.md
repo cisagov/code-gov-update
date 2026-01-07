@@ -1,6 +1,7 @@
 # code-gov-update #
 
 [![GitHub Build Status](https://github.com/cisagov/code-gov-update/workflows/build/badge.svg)](https://github.com/cisagov/code-gov-update/actions/workflows/build.yml)
+[![License](https://img.shields.io/github/license/cisagov/code-gov-update)](https://spdx.org/licenses/)
 [![CodeQL](https://github.com/cisagov/code-gov-update/workflows/CodeQL/badge.svg)](https://github.com/cisagov/code-gov-update/actions/workflows/codeql-analysis.yml)
 
 ## Docker Image ##
