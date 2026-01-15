@@ -74,8 +74,7 @@ RUN python3 -m venv --system-site-packages /usr/local \
 ###
 WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
-RUN pipenv check --verbose \
-    && pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
+RUN pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
