@@ -25,16 +25,16 @@ ENV PYTHON_PIPENV_VERSION=2026.0.3
 ENV PYTHON_SETUPTOOLS_VERSION=80.9.0
 ENV PYTHON_WHEEL_VERSION=0.45.1
 
-# Install the system package dependencies necessary to set up the image's Python
-# virtual environment.
+# Install the system package dependencies necessary to set up the
+# image's Python virtual environment.
 RUN apk --no-cache add \
   gcc=15.2.0-r2 \
   libffi-dev=3.5.2-r0 \
   musl-dev=1.2.5-r21 \
+  # This package is being installed because we want to avoid building
+  # wheels on some of the hardware platforms we support.  Note that we
+  # must install it both here and in the build stage for this to work.
   py3-cryptography=46.0.3-r0 \
-  py3-pip=25.1.1-r1 \
-  py3-setuptools=80.9.0-r2 \
-  py3-wheel=0.46.1-r0 \
   python3-dev=3.12.12-r0 \
   python3=3.12.12-r0
 
