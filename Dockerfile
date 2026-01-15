@@ -18,10 +18,11 @@ ARG CISA_USER="cisa"
 ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
-# Versions of the Python packages installed directly
-ENV PYTHON_PIP_VERSION=25.0.1
-ENV PYTHON_PIPENV_VERSION=2024.4.1
-ENV PYTHON_SETUPTOOLS_VERSION=78.1.0
+# Versions of the Python packages installed directly.  These are the
+# current latest versions for Python 3.12.
+ENV PYTHON_PIP_VERSION=25.3
+ENV PYTHON_PIPENV_VERSION=2026.0.3
+ENV PYTHON_SETUPTOOLS_VERSION=80.9.0
 ENV PYTHON_WHEEL_VERSION=0.45.1
 
 # Install the system package dependencies necessary to set up the image's Python
