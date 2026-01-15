@@ -9,7 +9,7 @@
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/alpine:3.22 AS compile-stage
+FROM docker.io/library/alpine:3.23 AS compile-stage
 
 ###
 # Unprivileged user variables
@@ -27,12 +27,12 @@ ENV PYTHON_WHEEL_VERSION=0.45.1
 # Install the system package dependencies necessary to set up the image's Python
 # virtual environment.
 RUN apk --no-cache add \
-  gcc=14.2.0-r6 \
-  libffi-dev=3.4.8-r0 \
-  musl-dev=1.2.5-r10 \
-  py3-cryptography=44.0.3-r0 \
-  py3-pip=25.1.1-r0 \
-  py3-setuptools=80.9.0-r0 \
+  gcc=15.2.0-r2 \
+  libffi-dev=3.5.2-r0 \
+  musl-dev=1.2.5-r21 \
+  py3-cryptography=46.0.3-r0 \
+  py3-pip=25.1.1-r1 \
+  py3-setuptools=80.9.0-r2 \
   py3-wheel=0.46.1-r0 \
   python3-dev=3.12.12-r0 \
   python3=3.12.12-r0
@@ -81,7 +81,7 @@ RUN pipenv check --verbose \
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.12.12-alpine3.22 AS build-stage
+FROM docker.io/library/python:3.12.12-alpine3.23 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -105,9 +105,9 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
-  cloc=2.04-r0 \
-  git=2.49.1-r0 \
-  py3-cryptography=44.0.3-r0
+  cloc=2.06-r0 \
+  git=2.52.0-r0 \
+  py3-cryptography=46.0.3-r0
 
 ###
 # Create unprivileged user
