@@ -18,20 +18,20 @@
     "default": {
         "boto3": {
             "hashes": [
-                "sha256:ba9cd2f7819637d15bfbeb63af4c567fcc8a7dcd7b93dd12734ec58601169538",
-                "sha256:d7e548bea65e0ae2c465c77de937bc686b591aee6a352d5a19a16bc751e591c1"
+                "sha256:4251bbac90e4a190680439973d9e9ed851e50292c10cd063c8bf0c365410ffe1",
+                "sha256:edbfbfbadd419e65888166dd044786d4b731cf60abeb2301b73e775e154d7c5e"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.9'",
-            "version": "==1.42.30"
+            "version": "==1.42.35"
         },
         "botocore": {
             "hashes": [
-                "sha256:97070a438cac92430bb7b65f8ebd7075224f4a289719da4ee293d22d1e98db02",
-                "sha256:9bf1662b8273d5cc3828a49f71ca85abf4e021011c1f0a71f41a2ea5769a5116"
+                "sha256:40a6e0f16afe9e5d42e956f0b6d909869793fadb21780e409063601fc3d094b8",
+                "sha256:b89f527987691abbd1374c4116cc2711471ce48e6da502db17e92b17b2af8d47"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==1.42.30"
+            "version": "==1.42.35"
         },
         "certifi": {
             "hashes": [
@@ -352,11 +352,11 @@
         },
         "jmespath": {
             "hashes": [
-                "sha256:02e2e4cc71b5bcab88332eebf907519190dd9e6e82107fa7f83b1003a6252980",
-                "sha256:90261b206d6defd58fdd5e85f478bf633a2901798906be2ad389150c5c60edbe"
+                "sha256:472c87d80f36026ae83c6ddd0f1d05d4e510134ed462851fd5f754c8c3cbb88d",
+                "sha256:a5663118de4908c91729bea0acadca56526eb2698e83de10cd116ae0f4e97c64"
             ],
-            "markers": "python_version >= '3.7'",
-            "version": "==1.0.1"
+            "markers": "python_version >= '3.9'",
+            "version": "==1.1.0"
         },
         "llnl-scraper": {
             "file": "https://api.github.com/repos/LLNL/scraper/tarball/536a72ce1ceb2e209281ff72a2ed59e735d45c33",
