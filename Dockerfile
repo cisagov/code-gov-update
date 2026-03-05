@@ -34,7 +34,7 @@ RUN apk --no-cache add \
   # This package is being installed because we want to avoid building
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
-  py3-cryptography=46.0.3-r0 \
+  py3-cryptography=46.0.5-r0 \
   python3-dev=3.12.12-r0 \
   python3=3.12.12-r0
 
@@ -107,7 +107,7 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 RUN apk --no-cache add \
   cloc=2.06-r0 \
   git=2.52.0-r0 \
-  py3-cryptography=46.0.3-r0
+  py3-cryptography=46.0.5-r0
 
 ###
 # Create unprivileged user
