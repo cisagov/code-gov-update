@@ -63,6 +63,13 @@ updates:
       interval: weekly
 
   - directory: /src
+    ignore:
+      # We should ignore updates to this dependency as long as we are installing the
+      # Alpine Linux py3-cryptography package in the Dockerfile. Since the version of
+      # cryptography in the Pipfile.lock file must be kept in sync with the version of
+      # the py3-cryptography package, we cannot use dependabot updates for this
+      # dependency at this time.
+      - dependency-name: cryptography
     package-ecosystem: pip
     schedule:
       interval: weekly
