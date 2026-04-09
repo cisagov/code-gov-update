@@ -143,9 +143,6 @@ Both updating dependencies and changing the [Pipenv] configuration in `src/Pipfi
 will result in a modified `src/Pipfile.lock` file that should be committed to the
 repository.
 
-> [!WARNING]
-> The `src/Pipfile.lock` as generated will fail `pre-commit` checks due to JSON formatting.
-
 ### Updating dependencies ###
 
 If you want to update existing dependencies you would run the following command
@@ -173,13 +170,13 @@ containerize.  It is recommended that most users use a version tag (e.g.
 `:0.3.0-rc.8`).
 
 | Image:tag | Description |
-|-----------|-------------|
-|`cisagov/code-gov-update:0.3.0-rc.8`| An exact release version. |
-|`cisagov/code-gov-update:0.3`| The most recent release matching the major and minor version numbers. |
-|`cisagov/code-gov-update:0`| The most recent release matching the major version number. |
-|`cisagov/code-gov-update:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
-|`cisagov/code-gov-update:nightly` | A nightly build of the `develop` branch of this repository. |
-|`cisagov/code-gov-update:latest`| The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
+| --------- | ----------- |
+| `cisagov/code-gov-update:0.3.0-rc.8` | An exact release version. |
+| `cisagov/code-gov-update:0.3` | The most recent release matching the major and minor version numbers. |
+| `cisagov/code-gov-update:0` | The most recent release matching the major version number. |
+| `cisagov/code-gov-update:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
+| `cisagov/code-gov-update:nightly` | A nightly build of the `develop` branch of this repository. |
+| `cisagov/code-gov-update:latest` | The most recent release image pushed to a container registry.  Pulling an image using the `:latest` tag [should be avoided.](https://vsupalov.com/docker-latest-tag/) |
 
 See the [tags tab](https://hub.docker.com/r/cisagov/code-gov-update/tags) on Docker
 Hub for a list of all the supported tags.
@@ -190,7 +187,7 @@ There are no volumes.
 
 <!--
 | Mount point | Purpose |
-|-------------|---------|
+| ----------- | ------- |
 | `/path/to/volume` | Volume description |
 -->
 
@@ -200,7 +197,7 @@ No ports are exposed by this container.
 
 <!--
 | Port | Purpose |
-|------|---------|
+| ---- | ------- |
 | `PORT_NUMBER` | Describe its purpose. |
 -->
 
@@ -212,7 +209,7 @@ There are no required environment variables.
 
 <!--
 | Name | Purpose | Default |
-|------|---------|---------|
+| ---- | ------- | ------- |
 | `REQUIRED_VARIABLE` | Describe its purpose. | `null` |
 -->
 
@@ -222,14 +219,14 @@ There are no optional environment variables.
 
 <!--
 | Name | Purpose | Default |
-|------|---------|---------|
+| ---- | ------- | ------- |
 | `OPTIONAL_VARIABLE` | Describe its purpose. | `null` |
 -->
 
 ## Secrets ##
 
 | Filename | Purpose |
-|----------|---------|
+| -------- | ------- |
 | `aws_config` | Provides the necessary AWS authentication to send email using SES. |
 | `scraper.json` | Provides the configuration to use for LLNL/scraper. |
 

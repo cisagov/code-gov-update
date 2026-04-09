@@ -1,20 +1,28 @@
 """email-update.py is a tool for sending an updated code.gov JSON file.
 
 Usage:
-  email-update.py --from=EMAIL --to=EMAIL [--cc=EMAIL] [--reply=EMAIL]  --json=FILENAME --subject=SUBJECT --text=FILENAME --html=FILENAME [--log-level=LEVEL]
+  email-update.py --from=EMAIL --to=EMAIL --subject=SUBJECT --json=FILENAME
+                 [--cc=EMAIL] [--reply=EMAIL] --text=FILENAME --html=FILENAME
+                 [--log-level=LEVEL]
   email-update.py (-h | --help)
 
 Options:
   -h --help         Show this message.
   --from=EMAIL      The email address from which the updated JSON file should be sent.
-  --to=EMAIL        A comma-separated list email address where the updated JSON file should be sent.
-  --cc=EMAIL        A comma-separated list email address where the updated JSON file should also be sent.
-  --reply=EMAIL     The email address to use as the reply-to address when sending the updated JSON file.
-  --json=FILENAME   The name of the updated JSON file.
+  --to=EMAIL        A comma-separated list email address where the updated JSON file
+                    should be sent.
   --subject=SUBJECT The subject to use when sending the updated JSON file.
-  --text=FILENAME   The name of a file containing the plain text that is to be used as the body of the email when sending the updated JSON file.
-  --html=FILENAME   The name of a file containing the HTML text that is to be used as the body of the email when sending the updated JSON file.
-  --log-level=LEVEL If specified, then the log level will be set to the specified value.  Valid values are "debug", "info", "warn", and "error".
+  --json=FILENAME   The name of the updated JSON file.
+  --cc=EMAIL        A comma-separated list email address where the updated JSON file
+                    should also be sent.
+  --reply=EMAIL     The email address to use as the reply-to address when sending the
+                    updated JSON file.
+  --text=FILENAME   The name of a file containing the plain text that is to be used as
+                    the body of the email when sending the updated JSON file.
+  --html=FILENAME   The name of a file containing the HTML text that is to be used as
+                    the body of the email when sending the updated JSON file.
+  --log-level=LEVEL If specified, then the log level will be set to the specified value.
+                    Valid values are "debug", "info", "warn", and "error".
 
 """
 
@@ -45,7 +53,8 @@ def main():
         )
     except ValueError:
         logging.critical(
-            f'"{log_level}" is not a valid logging level.  Possible values are debug, info, warn, and error.'
+            f'"{log_level}" is not a valid logging level.  '
+            "Possible values are debug, info, warn, and error."
         )
         return 1
 
