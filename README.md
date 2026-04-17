@@ -31,7 +31,7 @@ hosted by DHS](https://www.dhs.gov/code.json).
 To run the `cisagov/code-gov-update` image via Docker:
 
 ```console
-docker run cisagov/code-gov-update:0.3.0-rc.8
+docker run cisagov/code-gov-update:0.3.0-rc.9
 ```
 
 ### Running with Docker Compose ###
@@ -47,7 +47,7 @@ docker run cisagov/code-gov-update:0.3.0-rc.8
         environment:
           - AWS_CONFIG_FILE=path/to/aws_config
           - AWS_PROFILE=default
-        image: cisagov/code-gov-update:0.3.0-rc.8
+        image: cisagov/code-gov-update:0.3.0-rc.9
         init: true
     ```
 
@@ -95,7 +95,7 @@ environment variables.  See the
         environment:
           - AWS_CONFIG_FILE=/run/secrets/aws_config
           - AWS_PROFILE=default
-        image: cisagov/code-gov-update:0.3.0-rc.8
+        image: cisagov/code-gov-update:0.3.0-rc.9
         init: true
         secrets:
           - source: aws_config
@@ -131,7 +131,7 @@ environment variables.  See the
 1. Pull the new image:
 
     ```console
-    docker pull cisagov/code-gov-update:0.3.0-rc.8
+    docker pull cisagov/code-gov-update:0.3.0-rc.9
     ```
 
 1. Recreate and run the container by following the [previous instructions](#running-with-docker).
@@ -167,11 +167,11 @@ and then update dependencies as you would above.
 The images of this container are tagged with [semantic
 versions](https://semver.org) of the underlying example project that they
 containerize.  It is recommended that most users use a version tag (e.g.
-`:0.3.0-rc.8`).
+`:0.3.0-rc.9`).
 
 | Image:tag | Description |
 | --------- | ----------- |
-| `cisagov/code-gov-update:0.3.0-rc.8` | An exact release version. |
+| `cisagov/code-gov-update:0.3.0-rc.9` | An exact release version. |
 | `cisagov/code-gov-update:0.3` | The most recent release matching the major and minor version numbers. |
 | `cisagov/code-gov-update:0` | The most recent release matching the major version number. |
 | `cisagov/code-gov-update:edge` | The most recent image built from a merge into the `develop` branch of this repository. |
@@ -236,7 +236,7 @@ Build the image locally using this git repository as the [build context](https:/
 
 ```console
 docker build \
-  --tag cisagov/code-gov-update:0.3.0-rc.8 \
+  --tag cisagov/code-gov-update:0.3.0-rc.9 \
   https://github.com/cisagov/code-gov-update.git#develop
 ```
 
@@ -267,7 +267,7 @@ Docker:
       --file Dockerfile-x \
       --platform linux/amd64 \
       --output type=docker \
-      --tag cisagov/code-gov-update:0.3.0-rc.8 .
+      --tag cisagov/code-gov-update:0.3.0-rc.9 .
     ```
 
 ## Contributing ##

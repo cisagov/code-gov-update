@@ -29,13 +29,13 @@ ENV PYTHON_SETUPTOOLS_VERSION=82.0.0
 RUN apk --no-cache add \
   gcc=15.2.0-r2 \
   libffi-dev=3.5.2-r0 \
-  musl-dev=1.2.5-r21 \
+  musl-dev=1.2.5-r23 \
   # This package is being installed because we want to avoid building
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
   py3-cryptography=46.0.7-r0 \
-  python3-dev=3.12.12-r0 \
-  python3=3.12.12-r0
+  python3-dev=3.12.13-r0 \
+  python3=3.12.13-r0
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668), install the
@@ -77,7 +77,7 @@ RUN pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.12.12-alpine3.23 AS build-stage
+FROM docker.io/library/python:3.12.13-alpine3.23 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
