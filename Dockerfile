@@ -77,7 +77,7 @@ RUN pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.12.13-alpine3.23 AS build-stage
+FROM docker.io/library/python:3.14.5-alpine3.23 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
