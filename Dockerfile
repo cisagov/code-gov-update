@@ -19,23 +19,23 @@ ENV CISA_HOME="/home/${CISA_USER}"
 ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
 # Versions of the Python packages installed directly.  These are the
-# current latest versions for Python 3.12.
-ENV PYTHON_PIP_VERSION=26.0.1
-ENV PYTHON_PIPENV_VERSION=2026.0.3
-ENV PYTHON_SETUPTOOLS_VERSION=82.0.0
+# current latest versions for Python 3.14.
+ENV PYTHON_PIP_VERSION=26.2.1
+ENV PYTHON_PIPENV_VERSION=2026.7.1
+ENV PYTHON_SETUPTOOLS_VERSION=84.0.0
 
 # Install the system package dependencies necessary to set up the
 # image's Python virtual environment.
 RUN apk --no-cache add \
-  gcc=15.2.0-r2 \
-  libffi-dev=3.5.2-r0 \
-  musl-dev=1.2.5-r23 \
+  gcc=15.2.0-r5 \
+  libffi-dev=3.5.2-r1 \
+  musl-dev=1.2.6-r2 \
   # This package is being installed because we want to avoid building
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
-  py3-cryptography=46.0.7-r0 \
-  python3-dev=3.12.13-r0 \
-  python3=3.12.13-r0
+  py3-cryptography=47.0.0-r0 \
+  python3-dev=3.14.7-r0 \
+  python3=3.14.7-r0
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668), install the
@@ -70,14 +70,14 @@ RUN python3 -m venv --system-site-packages /usr/local \
 ###
 WORKDIR /tmp
 COPY src/Pipfile src/Pipfile.lock ./
-RUN pipenv install --clear --deploy --extra-pip-args "--no-cache-dir" --verbose
+RUN pipenv install --clear --deploy --extra-pip-args="--no-cache-dir" --verbose
 
 # The version of Python used here should match the version of the Alpine
 # python3 package installed in the compile-stage.
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.12.13-alpine3.23 AS build-stage
+FROM docker.io/library/python:3.14.7-alpine3.24 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
@@ -101,9 +101,9 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # Install the dependencies needed by the llnl-scraper Python package to
 # estimate labor hours for code.
 RUN apk --no-cache add \
-  cloc=2.06-r0 \
-  git=2.52.0-r0 \
-  py3-cryptography=46.0.7-r0
+  cloc=2.08-r0 \
+  git=2.54.0-r0 \
+  py3-cryptography=47.0.0-r0
 
 ###
 # Create unprivileged user
