@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 # Minimum version for IMDSv2 support
-boto3 = ">=1.43.0"
+boto3 = ">=1.43.43"
 # We need to use the system package version of this package. This matches the version
 # available for Alpine Linux 3.23. We must also ignore dependabot updates for this
 # dependency as long as we are using the system package.
