@@ -11,7 +11,7 @@ boto3 = ">=1.43.0"
 # dependency as long as we are using the system package.
 cryptography = "47.0.0"
 docopt = ">=0.6.2"
-# Minimum version with newer versions of cloc compatibility
+# Minimum version compatible with newer versions of cloc
 llnl-scraper = ">=0.15.0"
 
 [requires]
