@@ -7,12 +7,12 @@ name = "pypi"
 # Minimum version for IMDSv2 support
 boto3 = ">=1.43.0"
 # We need to use the system package version of this package. This matches the version
-# available for Alpine Linux 3.23. We must also ignore dependabot updates for this
+# available for Alpine Linux 3.24. We must also ignore dependabot updates for this
 # dependency as long as we are using the system package.
-cryptography = "46.0.7"
+cryptography = "47.0.0"
 docopt = ">=0.6.2"
-# Minimum version with newer versions of cloc compatibility
+# Minimum version compatible with newer versions of cloc
 llnl-scraper = ">=0.15.0"
 
 [requires]
-python_full_version = "3.12.13"
+python_full_version = "3.14.7"
