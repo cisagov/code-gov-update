@@ -34,8 +34,8 @@ RUN apk --no-cache add \
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
   py3-cryptography=47.0.0-r0 \
-  python3-dev=3.14.7-r0 \
-  python3=3.14.7-r0
+  python3-dev=3.14.7-r1 \
+  python3=3.14.7-r1
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668), install the
