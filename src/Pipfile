@@ -15,4 +15,4 @@ docopt = ">=0.6.2"
 llnl-scraper = ">=0.15.0"
 
 [requires]
-python_full_version = "3.14.7"
+python_full_version = "3.14.8"
