@@ -34,8 +34,8 @@ RUN apk --no-cache add \
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
   py3-cryptography=47.0.0-r0 \
-  python3-dev=3.14.7-r1 \
-  python3=3.14.7-r1
+  python3-dev=3.14.8-r0 \
+  python3=3.14.8-r0
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668), install the
@@ -77,7 +77,7 @@ RUN pipenv install --clear --deploy --extra-pip-args="--no-cache-dir" --verbose
 #
 # Official Docker images are in the form library/<app> while non-official
 # images are in the form <user>/<app>.
-FROM docker.io/library/python:3.14.7-alpine3.24 AS build-stage
+FROM docker.io/library/python:3.14.8-alpine3.24 AS build-stage
 
 ###
 # For a list of pre-defined annotation keys and value types see:
