@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1812fc58b436ced955b1cb4f099c7c5da794d83bdb408860c59d9eca946759dd"
+            "sha256": "94b4e09c61adb51e1b831975c151e0d91cb301e758884726dbe80c0042d1c3c8"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -18,20 +18,20 @@
     "default": {
         "boto3": {
             "hashes": [
-                "sha256:703a81baed186d31e27cf50065d25a9faeb704f009e7c56b0f002ca52a328896",
-                "sha256:c829bc3352e1e3922d8fe1db10b697182ac411b64ce5fc3acb0a06a29837417e"
+                "sha256:ab8f3d2c622ef039338b4f228d97ea55f1abd573d84bb9b9a5ee8cb6780c0ccd",
+                "sha256:c0620f799e0f0c222ba42c337b65cdbcd3da38a3121187f634d8926cbbb28a9c"
             ],
             "index": "pypi",
             "markers": "python_version >= '3.10'",
-            "version": "==1.43.109"
+            "version": "==1.43.118"
         },
         "botocore": {
             "hashes": [
-                "sha256:46b15bea4d942aaea6d7ab7c4b8a3a7290305064a3b41a6cb271cde9da3ba371",
-                "sha256:cd00edff465264fb448e36acc9ee29a828f738fff3746270b3f685a19194a5a6"
+                "sha256:7f3f9d88cc9e847587690f82a42e3c3c292c3026c92c1e60d68a9310018e003f",
+                "sha256:a45d7ae570674161e4a3542d8c68633bf7503f92d1de781ef7361b79488eda6f"
             ],
             "markers": "python_version >= '3.10'",
-            "version": "==1.43.109"
+            "version": "==1.43.118"
         },
         "certifi": {
             "hashes": [
@@ -521,11 +521,11 @@
         },
         "s3transfer": {
             "hashes": [
-                "sha256:ba0309fd86be3c27dbf78cdd813c13c5e1df16e5874b99d2535ebbdfb9892993",
-                "sha256:d8168eccca828cbb2cd573675333f3bddd254313a9c42494b84c76b539e8ba25"
+                "sha256:24eb7535804306355e31c952a90022bf5b2f9d760f9a11062c7493a217c08553",
+                "sha256:8326acc3d056d7f7b8a37110c7d2aea41f67e83f6ae79cd3b5fbcca34c726406"
             ],
             "markers": "python_version >= '3.10'",
-            "version": "==0.19.2"
+            "version": "==0.19.3"
         },
         "setuptools": {
             "hashes": [
