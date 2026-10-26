@@ -29,7 +29,7 @@ ENV PYTHON_SETUPTOOLS_VERSION=84.0.0
 RUN apk --no-cache add \
   gcc=15.2.0-r5 \
   libffi-dev=3.5.2-r1 \
-  musl-dev=1.2.6-r2 \
+  musl-dev=1.2.6-r3 \
   # This package is being installed because we want to avoid building
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
