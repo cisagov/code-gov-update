@@ -11,8 +11,12 @@ boto3 = ">=1.13.25"
 # dependency as long as we are using the system package.
 cryptography = "47.0.0"
 docopt = ">=0.6.2"
-# Minimum version compatible with newer versions of cloc
-llnl-scraper = ">=0.15.0"
+# 0.15.0 is the minimum version compatible with newer versions of cloc.
+#
+# 0.17.0 is the minimum version compatible with non-ancient versions of
+# setuptools.  See llnl/scraper#88 and llnl/scraper#90 for more
+# details.
+llnl-scraper = ">=0.17.0"
 
 [requires]
 python_full_version = "3.14.10"
