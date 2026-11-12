@@ -102,7 +102,7 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 # estimate labor hours for code.
 RUN apk --no-cache add \
   cloc=2.08-r0 \
-  git=2.54.0-r0 \
+  git=2.54.1-r0 \
   py3-cryptography=47.0.0-r0
 
 ###
