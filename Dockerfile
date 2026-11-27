@@ -28,14 +28,14 @@ ENV PYTHON_SETUPTOOLS_VERSION=84.0.0
 # image's Python virtual environment.
 RUN apk --no-cache add \
   gcc=15.2.0-r5 \
-  libffi-dev=3.5.2-r1 \
+  libffi-dev=3.8.2-r0 \
   musl-dev=1.2.6-r3 \
   # This package is being installed because we want to avoid building
   # wheels on some of the hardware platforms we support.  Note that we
   # must install it both here and in the build stage for this to work.
   py3-cryptography=47.0.0-r0 \
-  python3-dev=3.14.10-r1 \
-  python3=3.14.10-r1
+  python3-dev=3.14.10-r2 \
+  python3=3.14.10-r2
 
 ###
 # Create a Python virtual environment (venv) for setup (due to PEP 668), install the
