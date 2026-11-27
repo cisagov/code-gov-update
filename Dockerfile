@@ -20,9 +20,9 @@ ENV VIRTUAL_ENV="${CISA_HOME}/.venv"
 
 # Versions of the Python packages installed directly.  These are the
 # current latest versions for Python 3.14.
-ENV PYTHON_PIP_VERSION=26.2.1
-ENV PYTHON_PIPENV_VERSION=2026.7.1
-ENV PYTHON_SETUPTOOLS_VERSION=84.0.0
+ENV PYTHON_PIP_VERSION=26.3
+ENV PYTHON_PIPENV_VERSION=2026.12.1
+ENV PYTHON_SETUPTOOLS_VERSION=84.2.1
 
 # Install the system package dependencies necessary to set up the
 # image's Python virtual environment.
